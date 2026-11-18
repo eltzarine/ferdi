@@ -1,0 +1,20 @@
+/* Plein écran sur téléphone : l'appli tient exactement dans l'écran, sans que la page entière défile,
+   et laisse la place à la barre d'état et à la barre d'accueil de l'iPhone (zones de sécurité). */
+:root{--haut:env(safe-area-inset-top,0px);--bas:env(safe-area-inset-bottom,0px)}
+.scr{flex-direction:column;min-height:0}
+.ct{min-height:0;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+@media (max-width:500px){
+  html,body{position:fixed;inset:0;overflow:hidden;overscroll-behavior:none}
+  body{display:block}
+  #root{position:fixed;inset:0}
+  #app{position:absolute;inset:0;width:auto;height:auto;max-height:none}
+  .bd-bandeau{padding-top:calc(12px + var(--haut));flex:none}
+  #intro .barre{padding-top:calc(14px + var(--haut))}
+  #splash{padding-top:calc(40px + var(--haut));padding-bottom:calc(28px + var(--bas))}
+  #scan .noir,#conclusion .noir{padding-top:calc(16px + var(--haut))!important;padding-bottom:calc(16px + var(--bas))!important}
+  .bd-nav{padding-bottom:calc(12px + var(--bas));flex:none}
+  .ct{padding-bottom:calc(16px + var(--bas))}
+  .scr:has(.bd-nav) .ct{padding-bottom:16px}
+  .sheet{padding-bottom:calc(24px + var(--bas))}
+  #toast{bottom:calc(90px + var(--bas))}
+}

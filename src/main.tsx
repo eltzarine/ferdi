@@ -2,6 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './styles/bd.css'
 import './styles/miseajour.css'
+import './styles/ecran.css'
 import App from './App'
 import { demarrer } from './pwa/miseAJour'
 
