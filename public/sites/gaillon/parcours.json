@@ -10,7 +10,7 @@
   "titre": "Aide Ferdi à retrouver les pages du carnet !",
   "accroche": "Une chasse au trésor à travers mille ans d’histoire",
   "duree": "45–60 min",
-  "ages": "5–16 ans"
+  "ages": "5–18 ans"
  },
  "fiche": {
   "image": "sites/gaillon/img/lieu.jpg",
@@ -80,7 +80,62 @@
     "aide": "Réécoute le récit : Guillaume d’Estouteville !"
    },
    "defi": "Défi d’observation : compte les tours pointues du pavillon d’entrée.",
-   "suite": "Un roi d’Angleterre a bâti un château juste en face. Va là où on peut le voir."
+   "suite": "Un roi d’Angleterre a bâti un château juste en face. Va là où on peut le voir.",
+   "lycee": {
+    "recit": "Un acte de 1025 mentionne pour la première fois un château à Gaillon, sans dire qui l’a construit. Perché au-dessus de la Seine, entre Rouen et Paris, il contrôle la grande route du fleuve. Pendant la guerre de Cent Ans, la Normandie passe aux mains des Anglais ; elle redevient française en 1450. Guillaume d’Estouteville, archevêque de Rouen à partir de 1453, fait alors reconstruire le château.",
+    "document": {
+     "image": "sites/gaillon/img/lycee/doc1_pavillon.jpg",
+     "titre": "Le pavillon d’entrée du château, photographie ancienne de Jean-Eugène Durand",
+     "source": "Médiathèque de l’architecture et du patrimoine · CC BY-SA 4.0"
+    },
+    "questions": [
+     {
+      "texte": "Pourquoi bâtir un château à cet endroit au Moyen Âge ?",
+      "choix": [
+       "Pour contrôler la vallée de la Seine entre Rouen et Paris",
+       "Pour protéger un port de mer",
+       "Pour garder une mine d’or"
+      ],
+      "bonne": 0,
+      "bravo": "Exact : la Seine est la grande route entre Rouen et Paris, et le château la surveille.",
+      "oups": "Regarde où coule la Seine : quelle route passe au pied du château ?"
+     },
+     {
+      "texte": "Que nous apprend l’acte de 1025 ?",
+      "choix": [
+       "Qu’un château existe déjà, sans dire qui l’a bâti",
+       "Le nom de l’architecte du château",
+       "Le prix de sa construction"
+      ],
+      "bonne": 0,
+      "bravo": "Oui : c’est la plus ancienne mention connue, mais le constructeur reste inconnu.",
+      "oups": "Relis le récit : le document parle du château, mais pas de son constructeur."
+     },
+     {
+      "t": "ordre",
+      "texte": "Touche ces événements du plus ancien au plus récent.",
+      "elements": [
+       "Première mention d’un château à Gaillon",
+       "Philippe Auguste conquiert la Normandie",
+       "Les Anglais quittent la Normandie à la fin de la guerre de Cent Ans",
+       "Guillaume d’Estouteville fait reconstruire le château"
+      ],
+      "bravo": "Bravo, la chronologie est juste : 1025, 1204, 1450, après 1453.",
+      "oups": "Pas tout à fait. Repense à la guerre de Cent Ans : elle vient bien après Philippe Auguste."
+     }
+    ],
+    "jeu": {
+     "t": "mot",
+     "titre": "Lettres effacées",
+     "consigne": "Complète le nom de l’archevêque de Rouen qui a fait reconstruire le château après la guerre de Cent Ans.",
+     "mot": "ESTOUTEVILLE",
+     "donne": [
+      0
+     ],
+     "extra": "AUNRDS"
+    },
+    "indice": "Sur ma page, il ne reste que la première lettre du nom de l’archevêque : un E. À toi de retrouver les autres !"
+   }
   },
   {
    "id": 2,
@@ -125,7 +180,62 @@
     "consigne": "Vise Château-Gaillard, là-bas sur la colline, et prends-le en photo !"
    },
    "defi": "Défi d’observation : trouve la Seine et suis-la des yeux.",
-   "suite": "Un roi a échangé ce château contre… de l’eau et des poissons ! Descends vers les bassins."
+   "suite": "Un roi a échangé ce château contre… de l’eau et des poissons ! Descends vers les bassins.",
+   "lycee": {
+    "recit": "Fin du XIIe siècle : Richard Cœur de Lion est roi d’Angleterre, mais aussi duc de Normandie, et donc vassal du roi de France, Philippe Auguste. En 1196, un traité de paix oblige Richard à céder Gaillon et Vernon au roi de France ; le texte interdit aussi de fortifier le site voisin d’Andeli. Richard y fait pourtant bâtir Château-Gaillard, en deux ans seulement. Philippe Auguste l’assiège en 1203 et le prend en 1204 : toute la Normandie devient française.",
+    "document": {
+     "image": "sites/gaillon/img/lycee/doc2_chateau_gaillard.jpg",
+     "titre": "Château-Gaillard aux Andelys, gravure de Victor-Adolphe Malte-Brun",
+     "source": "Le Département de l’Eure, 1882 · domaine public"
+    },
+    "questions": [
+     {
+      "texte": "Pourquoi Richard Cœur de Lion, roi d’Angleterre, doit-il obéissance au roi de France ?",
+      "choix": [
+       "Parce qu’il est aussi duc de Normandie, et donc son vassal",
+       "Parce qu’il a perdu la croisade",
+       "Parce qu’il est né à Paris"
+      ],
+      "bonne": 0,
+      "bravo": "Oui : pour la Normandie, Richard est le vassal du roi de France.",
+      "oups": "Pense au titre que Richard porte en Normandie."
+     },
+     {
+      "texte": "Que prévoit le traité de 1196 ?",
+      "choix": [
+       "Gaillon passe au roi de France, et Andeli ne doit pas être fortifié",
+       "Gaillon devient anglais pour toujours",
+       "Les deux rois se partagent Paris"
+      ],
+      "bonne": 0,
+      "bravo": "C’est ça : Gaillon devient français et Andeli doit rester sans forteresse.",
+      "oups": "Relis le récit : il y a deux clauses, une sur Gaillon et une sur Andeli."
+     },
+     {
+      "texte": "En faisant bâtir Château-Gaillard, que fait Richard ?",
+      "choix": [
+       "Il ne respecte pas le traité de 1196",
+       "Il applique le traité à la lettre",
+       "Il obéit au roi de France"
+      ],
+      "bonne": 0,
+      "bravo": "Exact : Château-Gaillard est construit là où le traité l’interdisait.",
+      "oups": "Le traité interdisait de fortifier Andeli… et Château-Gaillard est aux Andelys."
+     },
+     {
+      "t": "ordre",
+      "texte": "Touche ces événements du plus ancien au plus récent.",
+      "elements": [
+       "Le traité de paix entre Richard et Philippe Auguste",
+       "La construction de Château-Gaillard",
+       "Le siège de Château-Gaillard",
+       "La Normandie devient française"
+      ],
+      "bravo": "Parfait : 1196, 1196-1198, 1203, 1204.",
+      "oups": "Pas encore. Un château se construit avant d’être assiégé !"
+     }
+    ]
+   }
   },
   {
    "id": 3,
@@ -172,7 +282,57 @@
     "aide": "Pose la soustraction : 1789 − 1262."
    },
    "defi": "Défi d’observation : cherche un poisson ou un oiseau près de l’eau.",
-   "suite": "Un cardinal a fait sculpter ses feuilles préférées dans la pierre. Retourne vers l’entrée et ouvre l’œil."
+   "suite": "Un cardinal a fait sculpter ses feuilles préférées dans la pierre. Retourne vers l’entrée et ouvre l’œil.",
+   "lycee": {
+    "recit": "En 1262, le roi Louis IX, Saint Louis, échange Gaillon avec Eudes Rigaud, archevêque de Rouen, contre des moulins, un étang et de l’argent. Pendant plus de cinq siècles, le château devient la résidence d’été des archevêques. Ces princes de l’Église sont aussi de grands seigneurs : ils possèdent des terres et en tirent des revenus. Tout s’arrête en 1789 : la Révolution met les biens du clergé à la disposition de la nation.",
+    "document": {
+     "image": "sites/gaillon/img/lycee/doc3_plan_1748.jpg",
+     "titre": "Plan du château, du jardin et du parc de Gaillon, levé pour l’archevêque de Saulx-Tavannes par Le Tellier",
+     "source": "1748 · Bibliothèque nationale de France · domaine public"
+    },
+    "questions": [
+     {
+      "texte": "Pour les archevêques de Rouen, qu’est-ce que Gaillon ?",
+      "choix": [
+       "Une résidence de campagne au cœur d’un grand domaine",
+       "Leur cathédrale",
+       "Une forteresse royale"
+      ],
+      "bonne": 0,
+      "bravo": "Oui : une maison d’été, avec ses terres et ses revenus.",
+      "oups": "Relis le récit : les archevêques y viennent l’été."
+     },
+     {
+      "texte": "Que montre le plan de 1748 ?",
+      "choix": [
+       "Un grand domaine organisé : château, jardins réguliers et parc",
+       "Une ville entourée de remparts",
+       "Un champ de bataille"
+      ],
+      "bonne": 0,
+      "bravo": "Bien vu : allées droites, parterres et parc, tout est ordonné autour du château.",
+      "oups": "Observe les longues allées et les formes géométriques du document."
+     },
+     {
+      "texte": "Pourquoi les archevêques perdent-ils Gaillon en 1789 ?",
+      "choix": [
+       "La Révolution met les biens du clergé à la disposition de la nation",
+       "Le château brûle",
+       "Le roi le reprend pour chasser"
+      ],
+      "bonne": 0,
+      "bravo": "Exact : les biens de l’Église deviennent des biens nationaux.",
+      "oups": "Pense à ce qui change en 1789 pour les biens de l’Église."
+     }
+    ],
+    "jeu": {
+     "t": "code",
+     "titre": "Cadenas des siècles",
+     "consigne": "Code à 6 chiffres : écris le siècle de chaque date, dans l’ordre chronologique : 1508, 1196, 1262. Exemple : 1789 est au XVIIIe siècle, donc 18.",
+     "code": "121316"
+    },
+    "indice": "J’avais noté trois dates sur ma page : 1508, 1196 et 1262. Le code, c’est leurs siècles, rangés dans l’ordre du temps. Attention : 1196 n’est pas au XIe siècle !"
+   }
   },
   {
    "id": 4,
@@ -221,7 +381,70 @@
     "aide": "Ça commence par I et ça finit par E."
    },
    "defi": "Défi d’observation : combien de feuilles de chêne vois-tu sur la façade ?",
-   "suite": "Ici, des buissons étaient taillés en forme de bateaux et d’oiseaux. Monte vers le grand mur des jardins."
+   "suite": "Ici, des buissons étaient taillés en forme de bateaux et d’oiseaux. Monte vers le grand mur des jardins.",
+   "lycee": {
+    "recit": "Georges d’Amboise, cardinal, archevêque de Rouen et principal ministre du roi Louis XII, a suivi les guerres d’Italie. Il y découvre les palais de la Renaissance. À Gaillon, de 1502 à 1510, il fait presque tout reconstruire avec des artistes français et italiens : façades rythmées de grandes fenêtres, médaillons et décors à l’antique. En 1508, il y reçoit Louis XII et Anne de Bretagne. Gaillon est reconnu comme le premier château de style Renaissance en France.",
+    "document": {
+     "image": "sites/gaillon/img/lycee/doc4_silvestre.jpg",
+     "titre": "Vue du château de Gaillon, gravure d’Israël Silvestre",
+     "source": "XVIIe siècle · domaine public"
+    },
+    "questions": [
+     {
+      "texte": "Comment les idées de la Renaissance arrivent-elles à Gaillon ?",
+      "choix": [
+       "Par les guerres d’Italie et les artistes que le cardinal fait venir",
+       "Par les croisades",
+       "Par les Grandes Découvertes en Amérique"
+      ],
+      "bonne": 0,
+      "bravo": "Oui : le cardinal a vu l’Italie pendant les guerres et en rapporte le goût nouveau.",
+      "oups": "Relis le début du récit : où le cardinal a-t-il découvert ces palais ?"
+     },
+     {
+      "texte": "Sur la gravure, qu’est-ce qui est typique de la Renaissance ?",
+      "choix": [
+       "Une façade régulière, avec arcades, grandes fenêtres et décors à l’antique",
+       "Des murs épais presque sans fenêtres",
+       "Des tours rondes couronnées de créneaux"
+      ],
+      "bonne": 0,
+      "bravo": "Bien observé : l’ordre, la symétrie et les décors antiques viennent d’Italie.",
+      "oups": "Les murs aveugles et les créneaux, c’est plutôt le château fort du Moyen Âge."
+     },
+     {
+      "texte": "Qui est Georges d’Amboise ?",
+      "choix": [
+       "Un cardinal, archevêque de Rouen et ministre du roi",
+       "Un architecte italien",
+       "Un roi de France"
+      ],
+      "bonne": 0,
+      "bravo": "C’est ça : un homme d’Église et un homme d’État à la fois.",
+      "oups": "Relis la première phrase du récit."
+     },
+     {
+      "t": "ordre",
+      "texte": "Touche ces événements du plus ancien au plus récent.",
+      "elements": [
+       "Le cardinal découvre l’Italie pendant les guerres d’Italie",
+       "Il lance le grand chantier de Gaillon",
+       "Il reçoit Louis XII et Anne de Bretagne à Gaillon"
+      ],
+      "bravo": "Exact : l’Italie d’abord, le chantier en 1502, la visite royale en 1508.",
+      "oups": "Pas encore. Il faut d’abord découvrir l’Italie pour l’imiter !"
+     }
+    ],
+    "jeu": {
+     "t": "mot",
+     "titre": "Mot caché",
+     "consigne": "Le grand mouvement artistique venu d’Italie que le cardinal fait entrer à Gaillon. 11 lettres.",
+     "mot": "RENAISSANCE",
+     "donne": [],
+     "extra": "TOMHU"
+    },
+    "indice": "Le cardinal a fait entrer à Gaillon un grand mouvement venu d’Italie. Je l’ai écrit en 11 lettres sur ma page."
+   }
   },
   {
    "id": 5,
@@ -281,7 +504,50 @@
     }
    },
    "defi": "Défi d’observation : touche le grand mur. Est-il en pierre, en brique ou les deux ?",
-   "suite": "Les jardiniers de Versailles sont venus ici. Cherche le pavillon qui abritait des orangers."
+   "suite": "Les jardiniers de Versailles sont venus ici. Cherche le pavillon qui abritait des orangers.",
+   "lycee": {
+    "recit": "Avec le cardinal, Gaillon reçoit l’un des plus grands jardins du royaume, dessiné à l’italienne : parterres géométriques, buis taillés, labyrinthes et une grande fontaine de marbre. Pacello da Mercogliano, jardinier venu de Naples, y travaille. Ce jardin montre l’ordre que l’homme impose à la nature, une idée chère aux humanistes. Il a disparu, mais le grand mur qui le bordait est toujours là.",
+    "document": {
+     "image": "sites/gaillon/img/lycee/doc5_du_cerceau.jpg",
+     "titre": "Plan du château et du jardin, par Jacques Androuet du Cerceau",
+     "source": "Les plus excellents bâtiments de France, XVIe siècle · domaine public"
+    },
+    "questions": [
+     {
+      "texte": "Que cherche à montrer un jardin à l’italienne ?",
+      "choix": [
+       "L’ordre et la maîtrise de la nature par l’homme",
+       "Une nature laissée sauvage",
+       "Un terrain de chasse"
+      ],
+      "bonne": 0,
+      "bravo": "Oui : la nature est taillée, mesurée, mise en ordre.",
+      "oups": "Regarde le plan : la nature y est-elle libre ou rangée ?"
+     },
+     {
+      "texte": "D’où vient Pacello, le jardinier ?",
+      "choix": [
+       "De Naples, en Italie",
+       "De Rouen",
+       "D’Espagne"
+      ],
+      "bonne": 0,
+      "bravo": "Exact : encore une influence italienne.",
+      "oups": "Relis le récit : c’est encore l’Italie !"
+     },
+     {
+      "texte": "Sur le plan de Du Cerceau, comment les parterres sont-ils dessinés ?",
+      "choix": [
+       "En carrés réguliers, comme une grille",
+       "En courbes libres",
+       "Il n’y a pas de parterres"
+      ],
+      "bonne": 0,
+      "bravo": "Bien vu : une grille de carrés réguliers.",
+      "oups": "Observe la partie gauche du plan."
+     }
+    ]
+   }
   },
   {
    "id": 6,
@@ -339,7 +605,78 @@
     ]
    },
    "defi": "Défi d’observation : cherche un blason sur le pavillon Colbert.",
-   "suite": "Après la Révolution, le château a eu une vie très différente. Cherche la maison grise."
+   "suite": "Après la Révolution, le château a eu une vie très différente. Cherche la maison grise.",
+   "lycee": {
+    "recit": "Un siècle et demi plus tard, Jacques-Nicolas Colbert, archevêque de Rouen et fils de Jean-Baptiste Colbert, le grand ministre de Louis XIV, modernise le domaine. Il fait appel à deux artistes du roi : l’architecte Jules Hardouin-Mansart, qui agrandit Versailles, et le jardinier André Le Nôtre. Le pavillon Colbert et son orangerie montrent le goût classique : symétrie, ordre et prestige. Comme à Versailles, l’architecture affirme le pouvoir.",
+    "document": {
+     "image": "sites/gaillon/img/lycee/doc6_plan_1748_detail.jpg",
+     "titre": "Le château et ses jardins, détail du plan de Le Tellier",
+     "source": "1748 · Bibliothèque nationale de France · domaine public"
+    },
+    "questions": [
+     {
+      "texte": "Pourquoi un archevêque fait-il appel aux artistes de Versailles ?",
+      "choix": [
+       "Pour suivre le modèle royal et montrer son prestige",
+       "Parce que Versailles est en ruine",
+       "Parce que le roi l’y oblige"
+      ],
+      "bonne": 0,
+      "bravo": "Oui : imiter Versailles, c’est montrer qu’on compte dans le royaume.",
+      "oups": "Pense à ce que représente Versailles à l’époque de Louis XIV."
+     },
+     {
+      "texte": "À quoi sert une orangerie ?",
+      "choix": [
+       "À abriter des orangers en pots pendant l’hiver",
+       "À presser des oranges",
+       "À loger des soldats"
+      ],
+      "bonne": 0,
+      "bravo": "Exact : on y rentre les arbres fragiles pour l’hiver.",
+      "oups": "Les orangers viennent de pays chauds : que faire d’eux en hiver ?"
+     },
+     {
+      "texte": "Qui est Jacques-Nicolas Colbert ?",
+      "choix": [
+       "Le fils de Jean-Baptiste Colbert, ministre de Louis XIV",
+       "Le frère de Louis XIV",
+       "Un architecte de Versailles"
+      ],
+      "bonne": 0,
+      "bravo": "C’est ça : le ministre, c’est son père.",
+      "oups": "Relis le récit : quel lien avec le grand ministre ?"
+     }
+    ],
+    "jeu": {
+     "t": "relie",
+     "titre": "Qui fait quoi ?",
+     "consigne": "Touche un nom, puis son rôle.",
+     "paires": [
+      [
+       "Jules Hardouin-Mansart",
+       "Architecte"
+      ],
+      [
+       "André Le Nôtre",
+       "Jardinier"
+      ],
+      [
+       "Jacques-Nicolas Colbert",
+       "Archevêque de Rouen"
+      ],
+      [
+       "Louis XIV",
+       "Roi"
+      ]
+     ],
+     "intrus": [
+      "Ministre",
+      "Peintre"
+     ]
+    },
+    "indice": "Quatre personnages de la fin du XVIIe siècle : à chacun son rôle. Attention, le ministre, c’était le père de l’archevêque !"
+   }
   },
   {
    "id": 7,
@@ -388,7 +725,71 @@
     "aide": "Ça commence par A et ça finit par R."
    },
    "defi": "Défi d’observation : compte les fenêtres de la Maison Grise.",
-   "suite": "Un jeune chêne a été planté en 2025 pour veiller sur le château. Trouve le jardin des Sculptures."
+   "suite": "Un jeune chêne a été planté en 2025 pour veiller sur le château. Trouve le jardin des Sculptures.",
+   "lycee": {
+    "recit": "À la Révolution, le domaine est vendu comme bien national et une partie du château sert de carrière de pierre. En 1812, sous Napoléon Ier, l’État en fait une maison centrale, une grande prison dessinée par l’architecte Louis-Ambroise Dubut. Les détenus travaillent dans des ateliers : tissage, chaussons, chaises. Au XIXe siècle, la prison doit punir, mais aussi corriger par le travail. Environ 50 000 personnes y passent en un siècle.",
+    "document": {
+     "image": "sites/gaillon/img/lycee/doc7_maison_centrale.jpg",
+     "titre": "Plan d’ensemble de la maison centrale de Gaillon, par l’architecte Louis-Ambroise Dubut",
+     "source": "XIXe siècle · photographie Totorvdr59, CC BY-SA 4.0"
+    },
+    "questions": [
+     {
+      "texte": "Que devient le château après la Révolution ?",
+      "choix": [
+       "Un bien national vendu, puis une prison d’État",
+       "Une résidence royale",
+       "Un musée"
+      ],
+      "bonne": 0,
+      "bravo": "Exact : vendu, en partie démoli, puis transformé en prison.",
+      "oups": "Relis le récit : à quoi sert le domaine à partir de 1812 ?"
+     },
+     {
+      "texte": "Pourquoi fait-on travailler les détenus au XIXe siècle ?",
+      "choix": [
+       "Pour les punir et les « corriger » par le travail",
+       "Pour qu’ils deviennent riches",
+       "Pour reconstruire le château"
+      ],
+      "bonne": 0,
+      "bravo": "Oui : le travail est vu comme un moyen de corriger les condamnés.",
+      "oups": "Relis l’avant-dernière phrase du récit."
+     },
+     {
+      "texte": "Sous quel régime la prison ouvre-t-elle en 1812 ?",
+      "choix": [
+       "Le Premier Empire de Napoléon Ier",
+       "La monarchie de Louis XIV",
+       "La IIIe République"
+      ],
+      "bonne": 0,
+      "bravo": "C’est ça : Napoléon Ier est empereur de 1804 à 1814.",
+      "oups": "En 1812, qui gouverne la France ?"
+     },
+     {
+      "t": "ordre",
+      "texte": "Touche ces événements du plus ancien au plus récent.",
+      "elements": [
+       "Les biens du clergé sont mis à la disposition de la nation",
+       "Le château sert de carrière de pierre",
+       "La maison centrale ouvre",
+       "La prison ferme"
+      ],
+      "bravo": "Juste : 1789, les années 1790, 1812, puis 1901.",
+      "oups": "Pas encore. Le château a d’abord été vendu et démoli avant de devenir une prison."
+     }
+    ],
+    "jeu": {
+     "t": "mot",
+     "titre": "Mot caché",
+     "consigne": "En 1812, le château devient une « maison … », une grande prison d’État. 8 lettres.",
+     "mot": "CENTRALE",
+     "donne": [],
+     "extra": "SOUP"
+    },
+    "indice": "En 1812, le château devient une « maison … ». J’ai écrit ce mot de 8 lettres sur ma page."
+   }
   },
   {
    "id": 8,
@@ -434,7 +835,51 @@
     "img": "sites/gaillon/img/puzzle.jpg"
    },
    "defi": "Défi d’observation : mesure le tronc du chêne avec tes bras.",
-   "suite": ""
+   "suite": "",
+   "lycee": {
+    "recit": "Pendant la Révolution, Alexandre Lenoir sauve des œuvres menacées et crée à Paris le musée des Monuments français. Il y emporte des morceaux de Gaillon, dont l’arc de la Porte de Gênes, installé ensuite dans la cour de l’École des beaux-arts. Le château est classé monument historique dès 1862 et devient propriété de l’État en 1975 ; des éléments reviennent à Gaillon en 1977. Aujourd’hui, la restauration continue : protéger le patrimoine, c’est le transmettre.",
+    "document": {
+     "image": "sites/gaillon/img/lycee/doc8_portail.jpg",
+     "titre": "Le portail du château de Gaillon remonté au musée des Monuments français, par François-Étienne Villeret",
+     "source": "1833 · CC0"
+    },
+    "questions": [
+     {
+      "texte": "Pourquoi Alexandre Lenoir emporte-t-il des morceaux du château à Paris ?",
+      "choix": [
+       "Pour les sauver de la destruction",
+       "Pour les vendre",
+       "Pour construire sa maison"
+      ],
+      "bonne": 0,
+      "bravo": "Oui : sans lui, ces sculptures auraient sans doute disparu.",
+      "oups": "Relis le récit : que fait Lenoir pendant la Révolution ?"
+     },
+     {
+      "texte": "Que signifie « classé monument historique » ?",
+      "choix": [
+       "L’État reconnaît sa valeur et le protège",
+       "Le bâtiment va être démoli",
+       "Il est interdit de le visiter"
+      ],
+      "bonne": 0,
+      "bravo": "Exact : le classement protège le bâtiment.",
+      "oups": "Pense au mot « protéger » : c’est le cœur du classement."
+     },
+     {
+      "t": "ordre",
+      "texte": "Touche ces événements du plus ancien au plus récent.",
+      "elements": [
+       "Alexandre Lenoir emporte la Porte de Gênes à Paris",
+       "Le château est classé monument historique",
+       "L’État devient propriétaire du château",
+       "Des éléments reviennent à Gaillon"
+      ],
+      "bravo": "Parfait : Révolution, 1862, 1975, 1977.",
+      "oups": "Pas encore. Lenoir agit pendant la Révolution, bien avant le classement."
+     }
+    ]
+   }
   }
  ]
 }

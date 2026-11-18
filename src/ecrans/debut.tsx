@@ -92,7 +92,7 @@ export function Accueil() {
   )
 }
 
-const AGES: [Age, string][] = [['5–8 ans', 'Images et voix'], ['9–12 ans', 'Énigmes avec aide'], ['13–16 ans', 'Défis et archives']]
+const AGES: [Age, string][] = [['5–8 ans', 'Images et voix'], ['9–12 ans', 'Énigmes avec aide'], ['13–16 ans', 'Défis et archives'], ['Lycée', '15–18 ans · documents et programme']]
 
 export function Profil() {
   const { s, maj, aller, toast } = useApp()
@@ -102,7 +102,7 @@ export function Profil() {
       <div className="ct">
         <div className="bd-champ"><label htmlFor="pn">Ton prénom</label><input id="pn" placeholder="Ex. Jules" autoComplete="off" maxLength={16} value={s.nom} onChange={(e) => maj({ nom: e.target.value.trimStart() })} /></div>
         <span className="bd-titre" style={{ fontSize: 20 }}>Ton âge</span>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,minmax(0,1fr))', gap: 10 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2,minmax(0,1fr))', gap: 10 }}>
           {AGES.map(([a, d]) => (
             <button key={a} className={'bd-vignette age' + (s.age === a ? ' on' : '')} data-age={a} onClick={() => { bip('tap'); maj({ age: a }) }}
               style={{ textAlign: 'left', fontFamily: 'inherit', padding: 10, display: 'flex', flexDirection: 'column', gap: 2 }}>

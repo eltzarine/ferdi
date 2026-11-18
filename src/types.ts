@@ -2,6 +2,19 @@
 
 export type Question = { texte: string; choix: string[]; bonne: number; bravo: string; oups: string }
 
+/** Question du niveau Lycée : choix multiple (comme Question) ou remise en ordre chronologique. */
+export type QuestionOrdre = { t: 'ordre'; texte: string; elements: string[]; bravo: string; oups: string }
+export type QuestionLycee = Question | QuestionOrdre
+
+/** Version Lycée d'une étape : récit enrichi, document d'époque, questions plus exigeantes, énigme plus dure. */
+export type EtapeLycee = {
+  recit: string
+  document: { image: string; titre: string; source: string }
+  questions: QuestionLycee[]
+  jeu?: Jeu
+  indice?: string
+}
+
 export type Jeu =
   | { t: 'mot'; titre: string; consigne: string; mot: string; donne: number[]; extra: string; aide?: string }
   | { t: 'code'; titre: string; consigne: string; code: string; aide?: string }
@@ -23,6 +36,7 @@ export type Etape = {
   jeu: Jeu
   defi: string
   suite: string
+  lycee?: EtapeLycee
 }
 
 export type Parcours = {
@@ -50,7 +64,7 @@ export type Lieu = {
   parcours?: string
 }
 
-export type Age = '5–8 ans' | '9–12 ans' | '13–16 ans'
+export type Age = '5–8 ans' | '9–12 ans' | '13–16 ans' | 'Lycée'
 
 export type Sauvegarde = {
   nom: string
@@ -62,6 +76,8 @@ export type Sauvegarde = {
   voix: boolean
   sfx: boolean
   histoireVue: boolean
+  /** niveau Lycée : bonnes réponses du premier coup, par lieu puis par étape [bonnes, total] */
+  scores?: Record<string, Record<number, [number, number]>>
 }
 
 export type Ecran =

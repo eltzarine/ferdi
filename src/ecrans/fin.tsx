@@ -4,6 +4,7 @@ import { useApp } from '../etat'
 import { Bouton, Ecoute, Entete, Nav } from '../ui/commun'
 import { FeuilleCarnet } from './parcours'
 import { bip } from '../lib/sons'
+import { scoreTotal } from '../lib/regles'
 
 const COULEURS = ['#f2762e', '#7ec8e3', '#e8b23a', '#3e9e5c', '#f28c8c']
 
@@ -33,6 +34,7 @@ export function Certificat() {
   useEffect(() => bip('stamp'), [])
   if (!parcours) return null
   const nom = s.nom.trim() || 'Explorateur'
+  const [bons, total] = scoreTotal(s.scores?.[parcours.id])
   return (
     <section className="scr on" id="certificat">
       <Entete titre="Page restaurée" retour="fin" />
@@ -43,6 +45,7 @@ export function Certificat() {
           <span className="bd-titre h1">{nom}</span>
           <span>a retrouvé les 8 pages du carnet de Ferdinand au {parcours.nom.toLowerCase()}</span>
           <div className="row" style={{ justifyContent: 'center' }}><span className="bd-etiq">8 étapes</span><span className="bd-etiq moutarde">{parcours.motSecret}</span><span className="bd-etiq">{new Date().toLocaleDateString('fr-FR')}</span></div>
+          {s.age === 'Lycée' && total > 0 && <div className="bd-etiq ciel" id="score" style={{ fontSize: 16 }}>Niveau lycée · {bons} / {total} bonnes réponses du premier coup</div>}
           <div className="bd-tampon slam" style={{ width: 92, height: 92, fontSize: 15, marginTop: 4, animationDelay: '.4s' }}>VALIDÉ<small>Gaillon</small></div>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2,minmax(0,1fr))', gap: 12 }}>

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { cibleTouchee, clavier, lettresDonnees, motSaisi, motSecretPartiel, puzzleDepart, puzzleResolu } from '../src/lib/regles'
+import { cibleTouchee, clavier, lettresDonnees, motSaisi, motSecretPartiel, ordreJuste, puzzleDepart, puzzleResolu, scoreTotal, taillePuzzle } from '../src/lib/regles'
 import parcours from '../public/sites/gaillon/parcours.json'
 
 describe('mot caché', () => {
@@ -52,6 +52,42 @@ describe('parcours de Gaillon', () => {
       const touches = clavier(j.mot!, d, j.extra!, '9–12 ans')
       const manquantes = [...j.mot!].filter((_, i) => !d.has(i))
       for (const l of manquantes) expect(touches).toContain(l)
+    }
+  })
+})
+
+describe('niveau Lycée', () => {
+  it('a plus de pièges au clavier et un puzzle de 4 × 4', () => {
+    const d = lettresDonnees('ITALIE', [], 'Lycée')
+    expect(clavier('ITALIE', d, 'ROMN', 'Lycée')).toHaveLength(14)
+    expect(taillePuzzle('Lycée')).toBe(4)
+  })
+  it('vérifie une remise en ordre', () => {
+    expect(ordreJuste(['a', 'b', 'c'], ['a', 'b', 'c'])).toBe(true)
+    expect(ordreJuste(['a', 'b', 'c'], ['b', 'a', 'c'])).toBe(false)
+    expect(ordreJuste(['a', 'b', 'c'], ['a', 'b'])).toBe(false)
+  })
+  it('additionne le score des étapes', () => {
+    expect(scoreTotal({ 0: [2, 3], 1: [4, 4] })).toEqual([6, 7])
+    expect(scoreTotal(undefined)).toEqual([0, 0])
+  })
+  it('a une version lycée complète pour chaque étape de Gaillon', () => {
+    for (const e of parcours.etapes) {
+      const l = (e as { lycee?: { recit: string; document: { image: string }; questions: { t?: string; choix?: string[]; bonne?: number; elements?: string[] }[]; jeu?: { t: string; mot?: string; donne?: number[]; extra?: string } } }).lycee
+      expect(l).toBeTruthy()
+      expect(l!.recit.length).toBeGreaterThan(200)
+      expect(l!.document.image).toMatch(/^sites\/gaillon\/img\/lycee\//)
+      expect(l!.questions.length).toBeGreaterThanOrEqual(3)
+      for (const q of l!.questions) {
+        if (q.t === 'ordre') expect(new Set(q.elements).size).toBe(q.elements!.length)
+        else expect(q.choix![q.bonne!]).toBeTruthy()
+      }
+      const j = l!.jeu
+      if (j?.t === 'mot') {
+        const d = lettresDonnees(j.mot!, j.donne!, 'Lycée')
+        const touches = clavier(j.mot!, d, j.extra!, 'Lycée')
+        for (const c of [...j.mot!].filter((_, i) => !d.has(i))) expect(touches).toContain(c)
+      }
     }
   })
 })

@@ -1,12 +1,12 @@
 /* Le parcours : plan, scan, étape (récit + questions), page du carnet, énigme, tampon. */
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { useApp } from '../etat'
 import { Bouton, BoutonSon, Cases, Ecoute, Entete, Icone, Retour } from '../ui/commun'
 import { bip } from '../lib/sons'
-import { motSecretPartiel } from '../lib/regles'
+import { difficile, melanger, motSecretPartiel, ordreJuste } from '../lib/regles'
 import { entreDeuxEtapes } from '../pwa/miseAJour'
 import { JEUX } from '../jeux'
-import type { Etape } from '../types'
+import type { Etape, Question, QuestionLycee, QuestionOrdre } from '../types'
 
 export function FeuilleCarnet({ e, i, lettre }: { e: Etape; i: number; lettre: boolean }) {
   return (
@@ -101,61 +101,121 @@ export function Scan() {
   )
 }
 
+/** Remise en ordre chronologique : on touche les événements du plus ancien au plus récent. */
+function QuestionOrdreUI({ q, k, surReponse }: { q: QuestionOrdre; k: number; surReponse: (ok: boolean) => void }) {
+  const melange = useMemo(() => melanger(q.elements), [q])
+  const [suite, setSuite] = useState<string[]>([])
+  const [etat, setEtat] = useState<'' | 'ok' | 'faux'>('')
+  const touche = (x: string) => {
+    if (etat === 'ok' || suite.includes(x)) return
+    bip('tap')
+    const n = [...suite, x]
+    setSuite(n)
+    if (n.length === q.elements.length) {
+      const ok = ordreJuste(q.elements, n)
+      bip(ok ? 'ok' : 'non')
+      setEtat(ok ? 'ok' : 'faux')
+      surReponse(ok)
+      if (!ok) setTimeout(() => { setSuite([]); setEtat('') }, 1200)
+    }
+  }
+  return (
+    <div className="bd-question ordre" data-k={k}>
+      <Ecoute texte={q.texte + ' ' + q.elements.join('. ')} question>{q.texte}</Ecoute>
+      <div className="bd-choix-ligne col">
+        {melange.map((x) => {
+          const n = suite.indexOf(x)
+          return (
+            <button key={x} className={'bd-choix' + (etat === 'ok' ? ' ok' : etat === 'faux' && n >= 0 ? ' faux' : n >= 0 ? ' sel' : '')} data-el={x} onClick={() => touche(x)}>
+              <span className="rang">{n >= 0 ? n + 1 : ''}</span>{x}
+            </button>
+          )
+        })}
+      </div>
+      {etat && <div className="retour on"><Retour ok={etat === 'ok'} texte={etat === 'ok' ? q.bravo : q.oups} /></div>}
+    </div>
+  )
+}
+
 export function EcranEtape() {
-  const { parcours, etapeCourante: i, s, aller } = useApp()
+  const { parcours, etapeCourante: i, s, maj, aller, ouvrirFeuille } = useApp()
   const [rep, setRep] = useState<Record<number, { choix: number; ok: boolean }>>({})
+  const [premier, setPremier] = useState<Record<number, boolean>>({})
   const [faux, setFaux] = useState<string>('')
   if (!parcours) return null
   const e = parcours.etapes[i]
-  const qs = s.age === '5–8 ans' ? e.questions.slice(0, 1) : e.questions
+  const lyc = s.age === 'Lycée' && e.lycee ? e.lycee : null
+  const qs: QuestionLycee[] = lyc ? lyc.questions : s.age === '5–8 ans' ? e.questions.slice(0, 1) : e.questions
   const tout = qs.every((_, k) => rep[k]?.ok)
+  const noter = (k: number, ok: boolean) => {
+    setPremier((p) => (k in p ? p : { ...p, [k]: ok }))
+    setRep((o) => ({ ...o, [k]: { choix: -1, ok } }))
+  }
+  const suite = () => {
+    if (lyc) {
+      const bons = qs.filter((_, k) => premier[k]).length
+      maj({ scores: { ...s.scores, [parcours.id]: { ...(s.scores?.[parcours.id] ?? {}), [i]: [bons, qs.length] } } })
+    }
+    aller('page')
+  }
   return (
     <section className="scr on" id="etape">
       <Entete titre={`Étape ${i + 1} · ${e.nom.replace('Pierre ', 'La pierre ')}`} retour="plan" droite={<BoutonSon />} />
       <div className="ct" style={{ gap: 10 }}>
         <div className="bd-recit" style={{ alignSelf: 'flex-start', fontSize: 15, padding: '6px 12px' }}>{e.epoque}</div>
         <div className="bd-image plein" style={{ height: 178, flex: 'none' }}><img src={e.image} alt={'Collage : ' + e.nom} /></div>
-        <div className="bd-bulle haut" style={{ marginTop: 4, padding: 0 }}><Ecoute texte={e.recit} invite={i === 0} /></div>
+        <div className="bd-bulle haut" style={{ marginTop: 4, padding: 0 }}><Ecoute texte={lyc ? lyc.recit : e.recit} invite={i === 0} /></div>
+        {lyc && (
+          <button className="bd-vignette document" onClick={() => { bip('pop'); ouvrirFeuille(<div className="document-grand"><img src={lyc.document.image} alt={lyc.document.titre} /><b>{lyc.document.titre}</b><small>{lyc.document.source}</small></div>) }}>
+            <span className="bd-etiq moutarde">Document</span>
+            <img src={lyc.document.image} alt={lyc.document.titre} />
+            <span className="leg"><b>{lyc.document.titre}</b><small>{lyc.document.source} · touche pour agrandir</small></span>
+          </button>
+        )}
         {i < 2 && <div className="astuce"><span aria-hidden="true">👆</span><span>Touche <b>Écouter</b> : Ferdi te lit le texte et les questions.</span></div>}
         {qs.map((q, k) => {
+          if ('t' in q && q.t === 'ordre') return <QuestionOrdreUI key={k} q={q} k={k} surReponse={(ok) => noter(k, ok)} />
           const r = rep[k]
+          const choix = q as Question
           return (
             <div className="bd-question" key={k} data-k={k}>
-              <Ecoute texte={q.texte} question />
-              <div className="bd-choix-ligne">
-                {q.choix.map((c, j) => (
-                  <button key={j} className={'bd-choix' + (r?.ok ? (j === q.bonne ? ' ok' : ' non') : faux === `${k}-${j}` ? ' faux' : '')}
+              <Ecoute texte={choix.texte} question />
+              <div className={'bd-choix-ligne' + (lyc ? ' col' : '')}>
+                {choix.choix.map((c, j) => (
+                  <button key={j} className={'bd-choix' + (r?.ok ? (j === choix.bonne ? ' ok' : ' non') : faux === `${k}-${j}` ? ' faux' : '')}
                     onClick={() => {
                       if (r?.ok) return
-                      const ok = j === q.bonne
+                      const ok = j === choix.bonne
                       bip(ok ? 'ok' : 'non')
+                      setPremier((p) => (k in p ? p : { ...p, [k]: ok }))
                       setRep((o) => ({ ...o, [k]: { choix: j, ok } }))
                       if (!ok) { setFaux(''); requestAnimationFrame(() => setFaux(`${k}-${j}`)) }
                     }}>{c}</button>
                 ))}
               </div>
-              {r && <div className="retour on"><Retour ok={r.ok} texte={r.ok ? q.bravo : q.oups} /></div>}
+              {r && <div className="retour on"><Retour ok={r.ok} texte={r.ok ? choix.bravo : choix.oups} /></div>}
             </div>
           )
         })}
-        <Bouton id="go-page" son="go" disabled={!tout} style={{ minHeight: 52 }} onClick={() => aller('page')}>Ouvrir la page du carnet</Bouton>
+        <Bouton id="go-page" son="go" disabled={!tout} style={{ minHeight: 52 }} onClick={suite}>Ouvrir la page du carnet</Bouton>
       </div>
     </section>
   )
 }
 
 export function EcranPage() {
-  const { parcours, etapeCourante: i } = useApp()
+  const { parcours, etapeCourante: i, s } = useApp()
   useEffect(() => bip('pop'), [])
   if (!parcours) return null
   const e = parcours.etapes[i]
+  const indice = (s.age === 'Lycée' && e.lycee?.indice) || e.page.indice
   return (
     <section className="scr on" id="page">
       <Entete titre="Carnet de Ferdinand" retour="etape" />
       <div className="ct" style={{ gap: 12, background: '#e9dcc3' }}>
         <FeuilleCarnet e={e} i={i} lettre={false} />
         <div className="bd-postit" style={{ margin: '0 6px', padding: 0 }}>
-          <Ecoute texte={'Indice de Ferdinand : ' + e.page.indice}><b className="bd-titre" style={{ fontSize: 18, display: 'block' }}>Indice de Ferdinand</b>{e.page.indice}</Ecoute>
+          <Ecoute texte={'Indice de Ferdinand : ' + indice}><b className="bd-titre" style={{ fontSize: 18, display: 'block' }}>Indice de Ferdinand</b>{indice}</Ecoute>
         </div>
         <Bouton vers="jeu" son="go" id="go-jeu">Résoudre l’énigme</Bouton>
       </div>
@@ -169,7 +229,7 @@ export function EcranJeu() {
   const essais = useRef(0)
   if (!parcours) return null
   const e = parcours.etapes[i]
-  const j = e.jeu
+  const j = (s.age === 'Lycée' && e.lycee?.jeu) || e.jeu
   const Jeu = JEUX[j.t]
   const gagne = () => {
     bip('ok')
@@ -180,7 +240,7 @@ export function EcranJeu() {
     essais.current++
     bip('non')
     const a = 'aide' in j ? j.aide : undefined
-    setRetour({ ok: false, texte: aide ?? (s.age !== '13–16 ans' && essais.current >= 2 && a ? 'Indice : ' + a : 'Encore un essai ! Relis l’indice de Ferdinand.') })
+    setRetour({ ok: false, texte: aide ?? (!difficile(s.age) && essais.current >= 2 && a ? 'Indice : ' + a : 'Encore un essai ! Relis l’indice de Ferdinand.') })
   }
   return (
     <section className="scr on" id="jeu">

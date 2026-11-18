@@ -125,6 +125,10 @@ export async function telechargerParcours(p: Parcours, progression: (fait: numbe
     urls.add(e.image)
     urls.add(e.croquis)
     if ('img' in e.jeu) urls.add(e.jeu.img)
+    if (e.lycee) {
+      urls.add(e.lycee.document.image)
+      if (e.lycee.jeu && 'img' in e.lycee.jeu) urls.add(e.lycee.jeu.img)
+    }
   })
   const liste = [...urls]
   let n = 0

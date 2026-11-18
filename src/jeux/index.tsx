@@ -2,7 +2,7 @@
 import { useEffect, useMemo, useRef, useState, type MutableRefObject } from 'react'
 import type { Age, Jeu } from '../types'
 import { bip } from '../lib/sons'
-import { cibleTouchee, clavier, lettresDonnees, melanger, motSaisi, puzzleDepart, puzzleResolu } from '../lib/regles'
+import { cibleTouchee, clavier, lettresDonnees, melanger, motSaisi, puzzleDepart, puzzleResolu, taillePuzzle } from '../lib/regles'
 import { useApp } from '../etat'
 
 type P<T extends Jeu['t']> = { j: Extract<Jeu, { t: T }>; age: Age; gagne: () => void; rate: (aide?: string) => void; essais: MutableRefObject<number> }
@@ -163,7 +163,7 @@ function Relie({ j, gagne, rate }: P<'relie'>) {
 }
 
 function Puzzle({ j, age, gagne }: P<'puzzle'>) {
-  const n = age === '5–8 ans' ? 2 : 3
+  const n = taillePuzzle(age)
   const [ordre, setOrdre] = useState(() => puzzleDepart(n))
   const [sel, setSel] = useState<number | null>(null)
   const fini = puzzleResolu(ordre)
