@@ -1,0 +1,440 @@
+{
+ "id": "gaillon",
+ "nom": "Château de Gaillon",
+ "ville": "Gaillon (27)",
+ "motSecret": "SOUVENIR",
+ "phraseFinale": "Un monument, c’est un SOUVENIR qu’on répare ensemble.",
+ "premierIndice": "Commence par la porte que tout le monde franchit en arrivant : le pavillon d’entrée.",
+ "accueil": {
+  "image": "sites/gaillon/img/accueil.jpg",
+  "titre": "Aide Ferdi à retrouver les pages du carnet !",
+  "accroche": "Une chasse au trésor à travers mille ans d’histoire",
+  "duree": "45–60 min",
+  "ages": "5–16 ans"
+ },
+ "fiche": {
+  "image": "sites/gaillon/img/lieu.jpg",
+  "bulle": "L’un des premiers châteaux de la Renaissance en France ! Mon arrière-grand-père Ferdinand y a travaillé. On y va ?",
+  "ouverture": "Du 10 avril au 4 octobre, du mardi au dimanche"
+ },
+ "fin": {
+  "image": "sites/gaillon/img/intro.jpg",
+  "bulle": "Grâce à toi, j’ai retrouvé les 8 pages du carnet de Ferdinand ! Le mot secret, c’était SOUVENIR."
+ },
+ "etapes": [
+  {
+   "id": 1,
+   "nom": "Pierre du donjon",
+   "date": "1025–1453",
+   "epoque": "1025–1453 — Le tout premier château",
+   "image": "sites/gaillon/img/etape1.jpg",
+   "croquis": "sites/gaillon/img/croquis_c1.jpg",
+   "recit": "En 1025, un vieux parchemin parle pour la première fois d’un château ici. Mais personne ne sait qui l’a construit ! Bien plus tard, après la guerre de Cent Ans, l’archevêque Guillaume d’Estouteville le reconstruit. Ce pavillon d’entrée et sa tour d’escalier, c’est lui !",
+   "questions": [
+    {
+     "texte": "Le tout premier château, on sait qui l’a construit ?",
+     "choix": [
+      "Oui",
+      "Non, personne",
+      "Un dragon"
+     ],
+     "bonne": 1,
+     "bravo": "Le parchemin de 1025 donne seulement son nom.",
+     "oups": "Raté ! Réécoute le début du récit."
+    },
+    {
+     "texte": "Qui a reconstruit ce pavillon après la guerre de Cent Ans ?",
+     "choix": [
+      "Un roi",
+      "Un archevêque",
+      "Un pirate"
+     ],
+     "bonne": 1,
+     "bravo": "Guillaume d’Estouteville, archevêque de Rouen.",
+     "oups": "Pas tout à fait… c’était un homme d’Église."
+    }
+   ],
+   "page": {
+    "texte": "1977. Premier jour à Gaillon. On m’a dit : commence toujours par l’entrée, c’est elle qui raconte qui vivait là.",
+    "indice": "Sur ma page, le nom de l’archevêque est à moitié effacé : Guillaume d’EST_UTE_ILLE. À toi de le compléter !",
+    "lettre": "S"
+   },
+   "jeu": {
+    "t": "mot",
+    "titre": "Lettres effacées",
+    "consigne": "Complète le nom de l’archevêque qui a reconstruit l’entrée.",
+    "mot": "ESTOUTEVILLE",
+    "donne": [
+     0,
+     1,
+     2,
+     4,
+     5,
+     6,
+     8,
+     9,
+     10,
+     11
+    ],
+    "extra": "AUNR",
+    "aide": "Réécoute le récit : Guillaume d’Estouteville !"
+   },
+   "defi": "Défi d’observation : compte les tours pointues du pavillon d’entrée.",
+   "suite": "Un roi d’Angleterre a bâti un château juste en face. Va là où on peut le voir."
+  },
+  {
+   "id": 2,
+   "nom": "Pierre de Richard",
+   "date": "1196–1204",
+   "epoque": "1196–1204 — Deux rois se disputent Gaillon",
+   "image": "sites/gaillon/img/etape2.jpg",
+   "croquis": "sites/gaillon/img/croquis_c2.jpg",
+   "recit": "Gaillon passe sans cesse du roi de France, Philippe Auguste, au roi d’Angleterre, Richard Cœur de Lion, comme une balle qu’on se renvoie ! Richard fait construire Château-Gaillard sur l’autre rive. En 1204, Gaillon devient français pour de bon.",
+   "questions": [
+    {
+     "texte": "Qui a construit le château qu’on voit en face ?",
+     "choix": [
+      "Richard Cœur de Lion",
+      "Napoléon",
+      "Louis XIV"
+     ],
+     "bonne": 0,
+     "bravo": "Château-Gaillard, sur la falaise des Andelys.",
+     "oups": "Non ! C’est un roi d’Angleterre…"
+    },
+    {
+     "texte": "En 1204, Gaillon devient…",
+     "choix": [
+      "Anglais",
+      "Français",
+      "Italien"
+     ],
+     "bonne": 1,
+     "bravo": "Philippe Auguste gagne pour de bon.",
+     "oups": "Raté ! Réécoute la fin du récit."
+    }
+   ],
+   "page": {
+    "texte": "De la colline, deux châteaux se surveillent depuis 800 ans. Je venais les regarder avec mes jumelles.",
+    "indice": "Château-Gaillard est sur la colline d’en face. Prends-le en photo pour mon carnet !",
+    "lettre": "O"
+   },
+   "jeu": {
+    "t": "photo",
+    "titre": "Photo mystère",
+    "consigne": "Vise Château-Gaillard, là-bas sur la colline, et prends-le en photo !"
+   },
+   "defi": "Défi d’observation : trouve la Seine et suis-la des yeux.",
+   "suite": "Un roi a échangé ce château contre… de l’eau et des poissons ! Descends vers les bassins."
+  },
+  {
+   "id": 3,
+   "nom": "Pierre de l’étang",
+   "date": "1262",
+   "epoque": "1262 — Un château contre un étang",
+   "image": "sites/gaillon/img/etape3.jpg",
+   "croquis": "sites/gaillon/img/croquis_c3.jpg",
+   "recit": "Le roi Saint Louis donne le château à Eudes Rigaud, archevêque de Rouen, en échange d’un étang à poissons, de moulins et d’argent ! Les archevêques en font leur maison de vacances pendant plus de cinq siècles, jusqu’en 1789.",
+   "questions": [
+    {
+     "texte": "Contre quoi Saint Louis échange-t-il le château ?",
+     "choix": [
+      "Un étang à poissons",
+      "Un cheval",
+      "Une couronne"
+     ],
+     "bonne": 0,
+     "bravo": "Plus des moulins et de l’argent !",
+     "oups": "Non… c’est plein d’eau et de poissons."
+    },
+    {
+     "texte": "Les archevêques viennent ici pour…",
+     "choix": [
+      "Les vacances",
+      "La guerre",
+      "Pêcher en hiver"
+     ],
+     "bonne": 0,
+     "bravo": "C’était leur maison d’été.",
+     "oups": "Raté ! C’était bien plus reposant…"
+    }
+   ],
+   "page": {
+    "texte": "Les archevêques venaient se reposer ici, au bord de l’eau. J’y ai mangé mon casse-croûte, comme eux.",
+    "indice": "Ils sont arrivés en 1262 et partis en 1789. J’avais calculé combien d’années ils sont restés… mais j’ai oublié !",
+    "lettre": "U"
+   },
+   "jeu": {
+    "t": "code",
+    "titre": "Cadenas à code",
+    "consigne": "Combien d’années les archevêques sont-ils restés ? Calcule 1789 − 1262.",
+    "code": "527",
+    "aide": "Pose la soustraction : 1789 − 1262."
+   },
+   "defi": "Défi d’observation : cherche un poisson ou un oiseau près de l’eau.",
+   "suite": "Un cardinal a fait sculpter ses feuilles préférées dans la pierre. Retourne vers l’entrée et ouvre l’œil."
+  },
+  {
+   "id": 4,
+   "nom": "Pierre du cardinal",
+   "date": "1502–1510",
+   "epoque": "1502–1510 — Le palais italien du cardinal",
+   "image": "sites/gaillon/img/etape4.jpg",
+   "croquis": "sites/gaillon/img/croquis_c4.jpg",
+   "recit": "Le cardinal Georges d’Amboise revient d’Italie avec plein d’idées. Il fait presque tout reconstruire, à la mode italienne ! 1 800 ouvriers travaillent sur le chantier. En 1508, il reçoit le roi Louis XII et la reine Anne de Bretagne.",
+   "questions": [
+    {
+     "texte": "D’où le cardinal revient-il avec plein d’idées ?",
+     "choix": [
+      "D’Italie",
+      "D’Espagne",
+      "D’Angleterre"
+     ],
+     "bonne": 0,
+     "bravo": "Il a vu les palais italiens et veut les mêmes en Normandie !",
+     "oups": "Pas tout à fait… écoute bien le récit."
+    },
+    {
+     "texte": "En 1508, qui le cardinal reçoit-il au château ?",
+     "choix": [
+      "Le roi",
+      "Des pirates",
+      "Un dragon"
+     ],
+     "bonne": 0,
+     "bravo": "Louis XII, la reine Anne de Bretagne et le futur François Ier.",
+     "oups": "Raté ! C’est un invité très important…"
+    }
+   ],
+   "page": {
+    "texte": "Le cardinal adorait les feuilles de chêne. Il en a fait sculpter partout. Moi, je les ai dessinées une par une.",
+    "indice": "Le cardinal a rapporté ses idées d’un pays. Je l’ai écrit en 6 lettres.",
+    "lettre": "V"
+   },
+   "jeu": {
+    "t": "mot",
+    "titre": "Mot caché",
+    "consigne": "Retrouve le pays d’où le cardinal a rapporté ses idées. 6 lettres !",
+    "mot": "ITALIE",
+    "donne": [],
+    "extra": "ROMN",
+    "aide": "Ça commence par I et ça finit par E."
+   },
+   "defi": "Défi d’observation : combien de feuilles de chêne vois-tu sur la façade ?",
+   "suite": "Ici, des buissons étaient taillés en forme de bateaux et d’oiseaux. Monte vers le grand mur des jardins."
+  },
+  {
+   "id": 5,
+   "nom": "Pierre de la fontaine",
+   "date": "XVIe s.",
+   "epoque": "XVIe siècle — Le jardin des merveilles",
+   "image": "sites/gaillon/img/etape5.jpg",
+   "croquis": "sites/gaillon/img/croquis_c5.jpg",
+   "recit": "Pacello, un moine-jardinier venu de Naples, crée avec le cardinal l’un des trois plus grands jardins du royaume. Il y a des labyrinthes, des cerisiers, et des buis taillés en bateaux, en cavalier et en oiseaux ! Au centre, une grande fontaine en marbre. Le jardin a disparu, mais ce grand mur est toujours là.",
+   "questions": [
+    {
+     "texte": "En quelles formes taillait-on les buis ?",
+     "choix": [
+      "Bateaux et oiseaux",
+      "Voitures",
+      "Châteaux forts"
+     ],
+     "bonne": 0,
+     "bravo": "Et même un cavalier !",
+     "oups": "Non… les voitures n’existaient pas encore !"
+    },
+    {
+     "texte": "De quoi était faite la grande fontaine ?",
+     "choix": [
+      "Bois",
+      "Marbre",
+      "Chocolat"
+     ],
+     "bonne": 1,
+     "bravo": "En marbre, comme les palais italiens.",
+     "oups": "Raté ! Une pierre précieuse et toute blanche…"
+    }
+   ],
+   "page": {
+    "texte": "Le jardin a disparu, mais le mur se souvient de tout. J’ai dessiné le jardin d’autrefois pour ne pas l’oublier.",
+    "indice": "Dans mon dessin, j’ai caché trois buis taillés : un bateau, un cavalier et un oiseau.",
+    "lettre": "E"
+   },
+   "jeu": {
+    "t": "cherche",
+    "titre": "Cherche et trouve",
+    "consigne": "Trouve les trois buis taillés cachés dans le jardin : le bateau, le cavalier et l’oiseau.",
+    "img": "sites/gaillon/img/jardin_cherche.jpg",
+    "cibles": {
+     "bateau": [
+      0.2,
+      0.72
+     ],
+     "oiseau": [
+      0.62,
+      0.8
+     ],
+     "cavalier": [
+      0.83,
+      0.6
+     ]
+    }
+   },
+   "defi": "Défi d’observation : touche le grand mur. Est-il en pierre, en brique ou les deux ?",
+   "suite": "Les jardiniers de Versailles sont venus ici. Cherche le pavillon qui abritait des orangers."
+  },
+  {
+   "id": 6,
+   "nom": "Pierre de l’orangerie",
+   "date": "XVIIe s.",
+   "epoque": "Fin du XVIIe siècle — Les stars de Versailles",
+   "image": "sites/gaillon/img/etape6.jpg",
+   "croquis": "sites/gaillon/img/croquis_c6.jpg",
+   "recit": "L’archevêque Jacques-Nicolas Colbert, fils du ministre de Louis XIV, fait venir deux stars de Versailles : l’architecte Jules Hardouin-Mansart et le jardinier André Le Nôtre. Le pavillon Colbert abrite une orangerie, très à la mode.",
+   "questions": [
+    {
+     "texte": "Que mettait-on à l’abri dans l’orangerie ?",
+     "choix": [
+      "Des orangers",
+      "Des vaches",
+      "Des canons"
+     ],
+     "bonne": 0,
+     "bravo": "Les orangers craignent le froid de l’hiver.",
+     "oups": "Non ! Le nom de la pièce est un indice…"
+    },
+    {
+     "texte": "Les jardiniers venaient de quel château célèbre ?",
+     "choix": [
+      "Versailles",
+      "Disneyland",
+      "Château-Gaillard"
+     ],
+     "bonne": 0,
+     "bravo": "Le château de Louis XIV.",
+     "oups": "Raté ! C’est le château du Roi-Soleil."
+    }
+   ],
+   "page": {
+    "texte": "Les jardiniers de Versailles sont venus ici. Moi, je ne sais pas tailler un oranger… mais une pierre, oui !",
+    "indice": "Deux stars de Versailles sont venues à Gaillon. Qui faisait quoi ? Relie chaque nom à son métier.",
+    "lettre": "N"
+   },
+   "jeu": {
+    "t": "relie",
+    "titre": "Qui fait quoi ?",
+    "consigne": "Touche un nom, puis le bon métier.",
+    "paires": [
+     [
+      "Jules Hardouin-Mansart",
+      "Architecte"
+     ],
+     [
+      "André Le Nôtre",
+      "Jardinier"
+     ]
+    ],
+    "intrus": [
+     "Cuisinier"
+    ]
+   },
+   "defi": "Défi d’observation : cherche un blason sur le pavillon Colbert.",
+   "suite": "Après la Révolution, le château a eu une vie très différente. Cherche la maison grise."
+  },
+  {
+   "id": 7,
+   "nom": "Pierre des ateliers",
+   "date": "1812–1901",
+   "epoque": "1812–1901 — Les ateliers de la prison",
+   "image": "sites/gaillon/img/etape7.jpg",
+   "croquis": "sites/gaillon/img/croquis_c7.jpg",
+   "recit": "À la Révolution, le château est vendu et sert de carrière de pierre. En 1812, l’État en fait une grande prison. Environ 50 000 personnes y passent en un siècle. On y travaille dans des ateliers : tissage, chaussons, chaises, tapis.",
+   "questions": [
+    {
+     "texte": "Que fabriquait-on dans les ateliers ?",
+     "choix": [
+      "Chaises et tapis",
+      "Téléphones",
+      "Épées"
+     ],
+     "bonne": 0,
+     "bravo": "Et aussi des chaussons et du tissu.",
+     "oups": "Non… les téléphones n’existaient pas !"
+    },
+    {
+     "texte": "Combien de personnes sont passées par la prison en un siècle ?",
+     "choix": [
+      "500",
+      "5 000",
+      "50 000"
+     ],
+     "bonne": 2,
+     "bravo": "Environ 50 000 personnes.",
+     "oups": "C’est encore plus… réécoute le récit."
+    }
+   ],
+   "page": {
+    "texte": "Ici, des gens ont vécu des moments durs. On répare aussi les pierres pour ne pas oublier.",
+    "indice": "Les prisonniers travaillaient toute la journée dans un endroit en 7 lettres.",
+    "lettre": "I"
+   },
+   "jeu": {
+    "t": "mot",
+    "titre": "Mot caché",
+    "consigne": "Où les prisonniers travaillaient-ils toute la journée ? 7 lettres.",
+    "mot": "ATELIER",
+    "donne": [],
+    "extra": "SOU",
+    "aide": "Ça commence par A et ça finit par R."
+   },
+   "defi": "Défi d’observation : compte les fenêtres de la Maison Grise.",
+   "suite": "Un jeune chêne a été planté en 2025 pour veiller sur le château. Trouve le jardin des Sculptures."
+  },
+  {
+   "id": 8,
+   "nom": "Pierre du chêne",
+   "date": "Aujourd’hui",
+   "epoque": "Aujourd’hui — Le château revient",
+   "image": "sites/gaillon/img/etape8.jpg",
+   "croquis": "sites/gaillon/img/croquis_c8.jpg",
+   "recit": "En 1801, Alexandre Lenoir sauve des morceaux entiers du château, dont la Porte de Gênes, et les emporte dans son musée à Paris. Ils reviennent à Gaillon en 1977 ! Aujourd’hui, le château se reconstruit encore, et ce jeune chêne, planté en 2025, va grandir avec lui.",
+   "questions": [
+    {
+     "texte": "Qui a sauvé la Porte de Gênes en l’emportant à Paris ?",
+     "choix": [
+      "Alexandre Lenoir",
+      "Saint Louis",
+      "Richard"
+     ],
+     "bonne": 0,
+     "bravo": "Il l’a gardée dans son musée.",
+     "oups": "Non… c’est un homme de musée !"
+    },
+    {
+     "texte": "Le chêne a été planté en…",
+     "choix": [
+      "1508",
+      "1812",
+      "2025"
+     ],
+     "bonne": 2,
+     "bravo": "Il est tout jeune !",
+     "oups": "Raté ! Il est bien plus jeune que ça."
+    }
+   ],
+   "page": {
+    "texte": "1977 : les morceaux du château sont revenus de Paris. J’étais là pour les voir revenir. Le château, c’est un puzzle géant.",
+    "indice": "Ma dernière page est déchirée en morceaux. Remets ma gravure du château en ordre !",
+    "lettre": "R"
+   },
+   "jeu": {
+    "t": "puzzle",
+    "titre": "Puzzle du château",
+    "consigne": "Touche deux morceaux pour les échanger, jusqu’à reconstruire la gravure.",
+    "img": "sites/gaillon/img/puzzle.jpg"
+   },
+   "defi": "Défi d’observation : mesure le tronc du chêne avec tes bras.",
+   "suite": ""
+  }
+ ]
+}
