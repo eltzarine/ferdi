@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import './styles/bd.css'
 import './styles/miseajour.css'
 import './styles/ecran.css'
+import './styles/carte.css'
 import App from './App'
 import { demarrer } from './pwa/miseAJour'
 

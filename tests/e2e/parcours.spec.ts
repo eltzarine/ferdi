@@ -47,7 +47,7 @@ test('parcours complet de Gaillon', async ({ page }) => {
   await page.click('#go-start')
   await page.fill('#pn', 'Jules')
   await page.click('#go-profil')
-  await page.locator('.pin[data-lieu="gaillon"]').click()
+  await page.locator('.pin-carte[data-lieu="gaillon"]').click()
   await page.click('#lancer')
   for (let i = 0; i < 8; i++) {
     await page.click('#go-scan')

@@ -3,46 +3,45 @@
   {
    "id": "gaillon",
    "nom": "Château de Gaillon",
-   "x": 50,
-   "y": 58,
    "vignette": "sites/vignettes/t_gaillon.jpg",
    "etat": "jeu",
-   "distance": "à 2 km",
-   "parcours": "sites/gaillon/parcours.json"
+   "parcours": "sites/gaillon/parcours.json",
+   "lat": 49.16113,
+   "lon": 1.33
   },
   {
    "id": "gaillard",
    "nom": "Château-Gaillard",
-   "x": 70,
-   "y": 33,
    "vignette": "sites/vignettes/t_gaillard.jpg",
-   "etat": "bientot"
+   "etat": "bientot",
+   "lat": 49.238126,
+   "lon": 1.402752
   },
   {
    "id": "rouen",
    "nom": "Cathédrale de Rouen",
    "court": "Rouen",
-   "x": 22,
-   "y": 31,
    "vignette": "sites/vignettes/t_rouen.jpg",
-   "etat": "bientot"
+   "etat": "bientot",
+   "lat": 49.440269,
+   "lon": 1.094717
   },
   {
    "id": "bizy",
    "nom": "Château de Bizy",
    "court": "Bizy",
-   "x": 30,
-   "y": 82,
    "vignette": "sites/vignettes/t_bizy.jpg",
-   "etat": "bientot"
+   "etat": "bientot",
+   "lat": 49.0836,
+   "lon": 1.4658
   },
   {
    "id": "giverny",
    "nom": "Giverny",
-   "x": 80,
-   "y": 80,
    "vignette": "sites/vignettes/t_giverny.jpg",
-   "etat": "bientot"
+   "etat": "bientot",
+   "lat": 49.0753559,
+   "lon": 1.5337515
   }
  ]
 }

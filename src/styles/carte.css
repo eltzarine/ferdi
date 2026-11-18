@@ -1,0 +1,14 @@
+/* Carte réelle au style papier ancien (tuiles OpenStreetMap passées en tons crème et encre). */
+.carte-vraie{background:var(--papier-fonce)}
+.carte-vraie .leaflet-container{background:#efe5cf;font-family:var(--font-texte)}
+.tuiles-papier{filter:sepia(.55) saturate(.55) contrast(.92) brightness(1.04) hue-rotate(-8deg)}
+.leaflet-marker-icon.pin-leaflet{background:none;border:0}
+.pin-carte{display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;transform:translateY(-6px)}
+.pin-carte .pin-lbl{white-space:nowrap}
+.pin-carte img{border-radius:999px;object-fit:cover;display:block}
+.pin-carte .bd-etiq{min-height:22px;font-size:12px;padding:0 6px}
+.pin-carte.gail img{animation:battre 1.6s ease-in-out infinite}
+.pin-carte:active{transform:translateY(-6px) scale(.94)}
+.moi span{display:block;width:22px;height:22px;border-radius:50%;background:var(--ciel);border:4px solid var(--blanc-papier);box-shadow:0 0 0 3px var(--encre),0 0 0 10px rgba(126,200,227,.35)}
+.carte-vraie .leaflet-control-attribution{font-size:10px;background:rgba(246,239,226,.85);border-top-left-radius:6px}
+.carte-vraie .leaflet-control-attribution a{color:var(--encre)}

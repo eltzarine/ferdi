@@ -1,6 +1,7 @@
 import { FournisseurApp, useApp } from './etat'
 import { Accueil, Histoire, Profil, Splash } from './ecrans/debut'
-import { Carte, FicheLieu } from './ecrans/lieux'
+import { FicheLieu } from './ecrans/lieux'
+import { Carte } from './ecrans/carte'
 import { EcranEtape, EcranJeu, EcranPage, Plan, Scan, Tampon } from './ecrans/parcours'
 import { Carnet, Certificat, Fin, Parent } from './ecrans/fin'
 import { BandeauMiseAJour } from './pwa/BandeauMiseAJour'

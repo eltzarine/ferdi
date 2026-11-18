@@ -42,11 +42,11 @@ export type Lieu = {
   id: string
   nom: string
   court?: string
-  x: number
-  y: number
+  /** position GPS (WGS84) */
+  lat: number
+  lon: number
   vignette: string
   etat: 'jeu' | 'bientot'
-  distance?: string
   parcours?: string
 }
 
