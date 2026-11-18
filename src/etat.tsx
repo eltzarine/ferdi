@@ -120,7 +120,7 @@ export function FournisseurApp({ children }: { children: ReactNode }) {
 
 /** Télécharge tout le parcours d'un lieu pour jouer sans réseau (cache « ferdi-site-<lieu> »). */
 export async function telechargerParcours(p: Parcours, progression: (fait: number, total: number) => void): Promise<boolean> {
-  const urls = new Set<string>([p.accueil.image, p.fiche.image, p.fin.image, 'media/intro_poster.jpg'])
+  const urls = new Set<string>([p.accueil.image, p.fiche.image, p.fin.image, 'media/intro_poster_v2.jpg'])
   p.etapes.forEach((e) => {
     urls.add(e.image)
     urls.add(e.croquis)

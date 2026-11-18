@@ -41,8 +41,8 @@ export function Histoire() {
       </div>
       <video
         ref={v}
-        src="media/ferdi_intro.mp4"
-        poster="media/intro_poster.jpg"
+        src="media/ferdi_intro_v2.mp4"
+        poster="media/intro_poster_v2.jpg"
         playsInline
         preload="metadata"
         onClick={() => { const x = v.current!; if (x.paused) { x.play(); setPause(false) } else { x.pause(); setPause(true) } }}
