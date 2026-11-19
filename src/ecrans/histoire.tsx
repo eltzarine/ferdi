@@ -83,7 +83,9 @@ export function Histoire() {
   }
 
   return (
-    <section className="scr on" id="histoire" ref={ref} style={{ padding: 0 }}>
+    <section className="scr on" id="histoire" style={{ padding: 0 }}>
+      {/* zone sous la barre d'état de l'iPhone (heure, batterie) : la carte s'y met à l'échelle */}
+      <div ref={ref} style={{ position: 'absolute', left: 0, right: 0, top: 'var(--haut, 0px)', bottom: 0 }}>
       <div
         className="ih-scr"
         style={{ position: 'absolute', left: '50%', top: '50%', transform: `translate(-50%, -50%) scale(${k})` }}
@@ -116,6 +118,7 @@ export function Histoire() {
           </div>
           {derniere && <button id="suivant" className="ih-suivant ih-grand" onClick={suivant}>C’EST PARTI ! <Fleche /></button>}
         </div>
+      </div>
       </div>
     </section>
   )
