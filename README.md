@@ -1,4 +1,4 @@
-# Ferdi — reporter du passé
+# Ferdi — chasseur d’Histoire
 
 Jeu de piste pour les 5–16 ans dans les châteaux et musées, joué sur le téléphone des parents.
 Ferdi part à la recherche des pages du carnet de son arrière-grand-père Ferdinand, tailleur de pierre.
@@ -65,8 +65,8 @@ npm run build     # dist/ + dist/sw.js
 
 - Images d'archives : Israël Silvestre, Jacques Androuet du Cerceau, Viollet-le-Duc, carte de Cassini,
   Art Institute of Chicago, Wikimedia Commons (licences dans le storyboard et le document du parcours).
-- Mascotte : image générée (ElevenLabs). Voix de l'intro : ElevenLabs (voix « Ferdi » et « Ferdinand »).
-- Musique et bruitages de l'intro : composés et synthétisés pour le projet.
+- Mascotte : image générée (ElevenLabs), version ado depuis nov. 2026. Intro : 7 cartes illustrées (`src/ecrans/histoire.tsx`) ; voix « Ferdi » et « Ferdinand » à refaire avec ElevenLabs (voix du navigateur en attendant).
+- Bruitages : synthétisés dans le navigateur.
 - Photos de l'intro : Muriel Marc (grenier), Totorvdr59 (chantier du château, tour de la Sirène 2016),
   Jean-Eugène Durand (pavillon d'entrée) — CC BY-SA 4.0 ; Absinthologue (pavillon) — CC0 ;
   François-Étienne Villeret (portail, CC0) ; objets du grenier : Art Institute of Chicago (CC0).

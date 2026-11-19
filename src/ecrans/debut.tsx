@@ -1,5 +1,5 @@
-/* Splash, histoire de Ferdi (vidéo), accueil du lieu, profil. */
-import { useEffect, useRef, useState } from 'react'
+/* Splash, accueil du lieu, profil (l'histoire de Ferdi est dans histoire.tsx). */
+import { useEffect, useState } from 'react'
 import { useApp, telechargerParcours } from '../etat'
 import { Bouton, BoutonSon, Cases, Entete } from '../ui/commun'
 import { bip } from '../lib/sons'
@@ -13,48 +13,13 @@ export function Splash() {
       <div className="ray" />
       <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12 }}>
         <div className="logo">FERDI</div>
-        <div className="sous">reporter du passé</div>
+        <div className="sous">chasseur d’Histoire</div>
       </div>
       <img className="f" src="ferdi/ferdi_m4.png" alt="Ferdi saute de joie" />
       <div className="bas">
         <Bouton son="go" id="explorer" onClick={() => { setApresHistoire('accueil'); aller('histoire') }}>Explorer</Bouton>
         <small>© XVI2026</small>
       </div>
-    </section>
-  )
-}
-
-export function Histoire() {
-  const { aller, apresHistoire, maj } = useApp()
-  const v = useRef<HTMLVideoElement>(null)
-  const [pause, setPause] = useState(false)
-  const [prog, setProg] = useState(0)
-  useEffect(() => {
-    v.current?.play().catch(() => setPause(true))
-  }, [])
-  const fin = () => { maj({ histoireVue: true }); aller(apresHistoire) }
-  return (
-    <section className="scr on" id="intro">
-      <div className="barre">
-        <span>Introduction · l’histoire de Ferdi</span>
-        <button id="passer" onClick={() => { bip('tap'); fin() }}>Passer</button>
-      </div>
-      <video
-        ref={v}
-        src="media/ferdi_intro_v2.mp4"
-        poster="media/intro_poster_v2.jpg"
-        playsInline
-        preload="metadata"
-        onClick={() => { const x = v.current!; if (x.paused) { x.play(); setPause(false) } else { x.pause(); setPause(true) } }}
-        onTimeUpdate={() => { const x = v.current!; setProg((x.currentTime / (x.duration || 64)) * 100) }}
-        onEnded={fin}
-      />
-      {pause && (
-        <div className="play">
-          <button onClick={() => v.current?.play().then(() => setPause(false))}>▶ Regarder</button>
-        </div>
-      )}
-      <div className="prog" style={{ width: prog + '%' }} />
     </section>
   )
 }
@@ -125,3 +90,5 @@ export function Profil() {
     </section>
   )
 }
+
+export { Histoire } from './histoire'
