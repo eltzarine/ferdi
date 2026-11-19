@@ -26,7 +26,15 @@ if (typeof window !== 'undefined') {
   if ('speechSynthesis' in window) speechSynthesis.getVoices()
 }
 
+let suiteActive = 0
+
+/** Arrête toute lecture, y compris une suite de textes en cours. */
 export function arreter() {
+  suiteActive++
+  couper()
+}
+
+function couper() {
   if ('speechSynthesis' in window) speechSynthesis.cancel()
   if (audio) { audio.pause(); audio = null }
   enCours?.(false)
@@ -56,9 +64,14 @@ function voixNavigateur(texte: string, etat: (parle: boolean) => void): boolean 
 /** Lit le texte ; `etat` reçoit true pendant la lecture puis false. Toucher le même bouton arrête la lecture.
     Renvoie false si aucune voix n'est disponible. */
 export function lire(texte: string, etat: (parle: boolean) => void): boolean {
+  suiteActive++
+  return lireUn(texte, etat)
+}
+
+function lireUn(texte: string, etat: (parle: boolean) => void): boolean {
   const memeBouton = enCours === etat
-  arreter()
-  if (memeBouton) return true
+  if (memeBouton) { arreter(); return true }
+  couper()
   const fichier = enregistrements[empreinte(texte)]
   if (fichier) {
     const a = new Audio('voix/' + fichier)
@@ -71,4 +84,24 @@ export function lire(texte: string, etat: (parle: boolean) => void): boolean {
     return true
   }
   return voixNavigateur(texte, etat)
+}
+
+/** Lit plusieurs textes à la suite (ex. réplique de Ferdinand puis réaction de Ferdi, chacune avec sa voix). */
+export function lireSuite(textes: string[], etat: (parle: boolean) => void): boolean {
+  const liste = textes.filter(Boolean)
+  if (!liste.length) return false
+  arreter()
+  const moi = suiteActive
+  let i = 0
+  const suivant = (): boolean => {
+    const t = liste[i++]
+    const relais = (p: boolean) => {
+      if (p) { etat(true); return }
+      setTimeout(() => {
+        if (moi === suiteActive && i < liste.length) { if (!suivant()) etat(false) } else etat(false)
+      }, 250)
+    }
+    return lireUn(t, relais)
+  }
+  return suivant()
 }

@@ -3,7 +3,7 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { useApp } from '../etat'
 import { bip } from '../lib/sons'
-import { arreter, lire } from '../lib/voix'
+import { arreter, lire, lireSuite } from '../lib/voix'
 import { SCENES } from './histoireScenes'
 import '../styles/intro.css'
 
@@ -61,13 +61,17 @@ export function Histoire() {
   const { ref, k } = useEchelle()
   const c = CARTES[n]
   const derniere = n === CARTES.length - 1
+  /* réplique puis réaction, chacune avec sa voix (Ferdinand ou Ferdi) */
   const texteLu = (i: number) => {
     const x = CARTES[i]
-    return [x.dialogue.texte, x.reaction].filter(Boolean).join(' ')
+    return [x.dialogue.texte, x.reaction ?? ''].filter(Boolean)
   }
   const ecouter = (id: string, texte: string) => lire(texte, (p) => setParle(p ? id : null))
+  const raconter = (i: number) => lireSuite(texteLu(i), (p) => setParle(p ? 'd' + i : null))
 
-  useEffect(() => () => arreter(), [])
+  /* la première carte se lit dès l'ouverture (le joueur vient de toucher « Explorer ») */
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => { raconter(0); return () => arreter() }, [])
 
   const fin = () => { arreter(); maj({ histoireVue: true }); aller(apresHistoire) }
   const suivant = () => {
@@ -75,7 +79,7 @@ export function Histoire() {
     bip('pop')
     const i = n + 1
     setN(i)
-    ecouter('d' + i, texteLu(i))
+    raconter(i)
   }
 
   return (
