@@ -15,7 +15,7 @@ export function Splash() {
         <div className="logo">FERDI</div>
         <div className="sous">chasseur d’Histoire</div>
       </div>
-      <img className="f" src="ferdi/ferdi_m4.png" alt="Ferdi saute de joie" />
+      <img className="f" src="ferdi/ferdi_m1.png" alt="Ferdi saute de joie" />
       <div className="bas">
         <Bouton son="go" id="explorer" onClick={() => { setApresHistoire('accueil'); aller('histoire') }}>Explorer</Bouton>
         <small>© XVI2026</small>
@@ -79,7 +79,7 @@ export function Profil() {
         <div className="bd-vignette bd-scotch" style={{ display: 'flex', alignItems: 'center', gap: 14, padding: '12px 14px', background: 'var(--ciel)' }}>
           <img src="ferdi/ferdi_m1.png" alt="Ferdi" style={{ height: 150, width: 'auto', flex: 'none', margin: '-6px 0' }} />
           <div className="bd-bulle" style={{ fontSize: 16, lineHeight: '22px', flex: 1 }}>
-            {s.nom.trim() ? `Salut ${s.nom.trim()} ! Moi c’est Ferdi. On part à la recherche des pages du carnet ?` : 'Salut, moi c’est Ferdi ! Et toi, comment tu t’appelles ?'}
+            {s.nom.trim() ? `Salut ${s.nom.trim()} ! Moi c’est Ferdi. On part sur les traces du carnet de Papi ?` : 'Salut, moi c’est Ferdi ! Et toi, comment tu t’appelles ?'}
           </div>
         </div>
         <Bouton id="go-profil" onClick={() => {

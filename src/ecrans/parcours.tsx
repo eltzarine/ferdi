@@ -1,4 +1,4 @@
-/* Le parcours : plan, scan, étape (récit + questions), page du carnet, énigme, tampon. */
+/* Le parcours : plan, scan, étape (récit + questions), énigme du carnet de Papi, mini-jeu, lettre de l'indice. */
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useApp } from '../etat'
 import { Bouton, BoutonSon, Cases, Ecoute, Entete, Icone, Retour } from '../ui/commun'
@@ -6,12 +6,13 @@ import { bip } from '../lib/sons'
 import { difficile, melanger, motSecretPartiel, ordreJuste } from '../lib/regles'
 import { entreDeuxEtapes } from '../pwa/miseAJour'
 import { JEUX } from '../jeux'
+import { IndicesTresor } from '../ui/tresor'
 import type { Etape, Question, QuestionLycee, QuestionOrdre } from '../types'
 
 export function FeuilleCarnet({ e, i, lettre }: { e: Etape; i: number; lettre: boolean }) {
   return (
     <div className="feuille">
-      <div className="pg-num">Page {i + 1} / 8 · {e.nom}</div>
+      <div className="pg-num">Énigme {i + 1} / 8 · {e.nom}</div>
       <img src={e.croquis} alt="Croquis de Ferdinand" />
       <p className="main">« {e.page.texte} »</p>
       <div className={'pg-lettre' + (lettre ? ' vue' : '')}>{lettre ? e.page.lettre : '?'}</div>
@@ -34,7 +35,7 @@ export function Plan() {
       <div className="ct" style={{ gap: 12 }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
           <Cases n={fait} total={E.length} />
-          <span className="lg">{fait} / {E.length} pages du carnet · mot secret : {motSecretPartiel(parcours.motSecret, fait).join(' ')}</span>
+          <span className="lg">{fait} / {E.length} énigmes résolues · indice de Gaillon : {motSecretPartiel(parcours.motSecret, fait).join(' ')}</span>
         </div>
         <div className="bd-vignette" style={{ padding: 0, overflow: 'hidden' }}>
           {E.map((e, i) => {
@@ -53,7 +54,7 @@ export function Plan() {
           })}
         </div>
         <div className="bd-postit" style={{ margin: '4px 6px 0', padding: 0 }} id="indice">
-          {fin ? <div style={{ padding: '10px 14px' }}><div className="bd-titre">Bravo !</div>Tu as retrouvé les 8 pages et le mot {parcours.motSecret}.</div>
+          {fin ? <div style={{ padding: '10px 14px' }}><div className="bd-titre">Bravo !</div>Tu as résolu les 8 énigmes : l’indice de Gaillon est {parcours.motSecret}.</div>
             : <Ecoute texte={'Indice : ' + indice} style={{ padding: '10px 12px' }}><b className="bd-titre" style={{ fontSize: 18, display: 'block' }}>Indice</b>{indice}</Ecoute>}
         </div>
         <Bouton id="go-scan" son="go" onClick={() => { if (fin) aller('fin'); else { choisirEtape(fait); aller('scan') } }}>{fin ? 'Voir la fin du parcours' : 'Scanner le QR code'}</Bouton>
@@ -197,7 +198,7 @@ export function EcranEtape() {
             </div>
           )
         })}
-        <Bouton id="go-page" son="go" disabled={!tout} style={{ minHeight: 52 }} onClick={suite}>Ouvrir la page du carnet</Bouton>
+        <Bouton id="go-page" son="go" disabled={!tout} style={{ minHeight: 52 }} onClick={suite}>Ouvrir le carnet de Papi</Bouton>
       </div>
     </section>
   )
@@ -211,11 +212,11 @@ export function EcranPage() {
   const indice = (s.age === 'Lycée' && e.lycee?.indice) || e.page.indice
   return (
     <section className="scr on" id="page">
-      <Entete titre="Carnet de Ferdinand" retour="etape" />
+      <Entete titre="Carnet de Papi" retour="etape" />
       <div className="ct" style={{ gap: 12, background: '#e9dcc3' }}>
         <FeuilleCarnet e={e} i={i} lettre={false} />
         <div className="bd-postit" style={{ margin: '0 6px', padding: 0 }}>
-          <Ecoute texte={'Indice de Ferdinand : ' + indice}><b className="bd-titre" style={{ fontSize: 18, display: 'block' }}>Indice de Ferdinand</b>{indice}</Ecoute>
+          <Ecoute texte={'Le conseil de Papi : ' + indice}><b className="bd-titre" style={{ fontSize: 18, display: 'block' }}>Le conseil de Papi</b>{indice}</Ecoute>
         </div>
         <Bouton vers="jeu" son="go" id="go-jeu">Résoudre l’énigme</Bouton>
       </div>
@@ -266,7 +267,7 @@ export function Tampon() {
   const fin = fait >= parcours.etapes.length
   return (
     <section className="scr on" id="tampon">
-      <Entete titre="Page retrouvée !" />
+      <Entete titre="Lettre trouvée !" />
       <div className="ct" style={{ alignItems: 'center', textAlign: 'center', gap: 12 }}>
         <div style={{ marginTop: 6 }}><span className="bd-eclat"><span className="bd-onom">BRAVO !</span></span></div>
         <div className="bd-vignette bd-scotch" style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 18, padding: '12px 14px' }}>
@@ -274,7 +275,7 @@ export function Tampon() {
           <div className="pg-lettre slam" id="tp-lettre" style={{ animationDelay: '.35s' }}>{e.page.lettre}</div>
         </div>
         <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: 6, alignItems: 'center' }}>
-          <span className="lg">Le mot secret du carnet</span>
+          <span className="lg">L’indice de Gaillon</span>
           <div className="mot-secret">{[...parcours.motSecret].map((c, k) => <span key={k} className={k < fait ? 'ok' : ''}>{k < fait ? c : ''}</span>)}</div>
         </div>
         {fin && (
@@ -283,6 +284,7 @@ export function Tampon() {
             <p className="main" style={{ margin: '6px 0 0', fontSize: 20, textAlign: 'right' }}>— Ferdinand</p>
           </div>
         )}
+        {fin && <IndicesTresor />}
         <div style={{ alignSelf: 'stretch', textAlign: 'left', background: 'var(--blanc-papier)', border: '2px solid var(--encre)', borderRadius: '12px 6px 10px 5px' }}><Ecoute texte={e.defi} /></div>
         {!fin && <div className="bd-postit" style={{ textAlign: 'left', alignSelf: 'stretch', margin: '0 6px' }}><div className="bd-titre">Indice pour l’étape {i + 2}</div>{e.suite}</div>}
         <Bouton id="suivante" son="go" style={{ alignSelf: 'stretch' }} onClick={() => aller(fin ? 'fin' : 'plan')}>{fin ? 'Voir la fin du parcours' : 'Étape suivante'}</Bouton>

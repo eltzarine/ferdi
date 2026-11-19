@@ -236,3 +236,13 @@ a,button{cursor:pointer;-webkit-user-select:none;user-select:none}
 .bd-vignette.document small,.document-grand small{color:var(--encre-douce);font-size:13px;line-height:17px}
 .document-grand{display:flex;flex-direction:column;gap:8px;font-size:16px;line-height:22px}
 .document-grand img{width:100%;max-height:60vh;object-fit:contain;background:#fffdf8;border:var(--trait-fin) solid var(--encre)}
+/* indices vers le trésor */
+.tresor{background:var(--blanc-papier);border:3px solid var(--encre);border-radius:12px 6px 10px 5px;box-shadow:3px 3px 0 var(--encre);padding:10px 12px;display:flex;flex-direction:column;gap:8px;align-self:stretch;text-align:left}
+.tresor-titre{display:flex;justify-content:space-between;align-items:center}.tresor-titre .bd-titre{font-size:20px}.tresor-titre b{font-family:var(--font-titre);font-size:22px;background:var(--moutarde);border:2px solid var(--encre);border-radius:6px;padding:0 8px}
+.tresor-cases{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+.tresor-case{display:flex;flex-direction:column;align-items:center;gap:3px;text-align:center}
+.tresor-case img{width:42px;height:42px;border-radius:50%;object-fit:cover;border:2px solid var(--encre);filter:grayscale(1);opacity:.5}
+.tresor-case.ok img{filter:none;opacity:1;box-shadow:0 0 0 3px var(--vert)}
+.tresor-case span{font-family:var(--font-titre);font-size:13px;line-height:15px;min-height:15px;word-break:break-all}
+.tresor-case.ok span{color:var(--vert)}
+.tresor-case small{font-size:10px;line-height:12px;color:var(--encre-douce)}

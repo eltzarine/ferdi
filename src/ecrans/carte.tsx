@@ -47,7 +47,7 @@ export function Carte() {
           <img src={l.vignette} alt="" style={{ width: 70, height: 70, borderRadius: 999, border: '3px solid var(--encre)', objectFit: 'cover' }} />
           <div><div className="bd-titre" style={{ fontSize: 24 }}>{l.nom}</div><div className="lg">Bientôt disponible{position ? ' · ' + km(distanceKm(position, [l.lat, l.lon])) : ''}</div></div>
         </div>
-        <div className="bd-bulle" style={{ fontSize: 16, lineHeight: '22px' }}>Ferdinand a peut-être caché une page ici aussi… Je te préviens dès que le jeu est prêt !</div>
+        <div className="bd-bulle" style={{ fontSize: 16, lineHeight: '22px' }}>Papi a peut-être enquêté ici aussi… Je te préviens dès que le jeu est prêt !</div>
       </>,
     )
   }

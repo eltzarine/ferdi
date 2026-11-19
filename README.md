@@ -1,8 +1,9 @@
 # Ferdi — chasseur d’Histoire
 
-Jeu de piste pour les 5–16 ans dans les châteaux et musées, joué sur le téléphone des parents.
-Ferdi part à la recherche des pages du carnet de son arrière-grand-père Ferdinand, tailleur de pierre.
-Premier lieu : le château de Gaillon (8 étapes, mot secret à reconstituer).
+Jeu de piste pour les 5–18 ans dans les châteaux et musées, joué sur le téléphone des parents.
+Ferdi reprend la quête de son arrière-grand-père Ferdinand, chercheur de trésor : dans chaque lieu, le carnet
+de Papi cache des énigmes et des dessins qui mènent à un indice ; réunis, les indices mènent au trésor.
+Premier lieu : le château de Gaillon (8 énigmes, dont les lettres forment l’indice du château).
 
 **Jouer :** https://eltzarine.github.io/ferdi/
 
@@ -11,7 +12,7 @@ Premier lieu : le château de Gaillon (8 étapes, mot secret à reconstituer).
 - **React + TypeScript + Vite**, publiée en **PWA** (installable, hors ligne) sur GitHub Pages.
 - **Capacitor** pour les versions mobiles : le même code devient une appli iOS et Android
   (`npx cap add ios`, `npx cap add android`, puis `npm run cap:sync`).
-- Aucun compte : profil, pages du carnet et certificats sont gardés sur le téléphone (`src/lib/stockage.ts`).
+- Aucun compte : profil, énigmes résolues et certificats sont gardés sur le téléphone (`src/lib/stockage.ts`).
 
 ## Ajouter un lieu
 
@@ -39,6 +40,18 @@ Ici la mise à jour n'est **pas obligatoire** : l'enfant finit son étape, et la
 s'installe d'elle-même au retour sur le plan du parcours (ou tout de suite avec « Mettre à jour »).
 La progression est sauvegardée avant le rechargement.
 
+## Voix de Ferdi
+
+Les textes à écouter (récits, questions, conseils de Papi, consignes, défis) sont joués depuis
+`public/voix/` quand ils ont été enregistrés, sinon avec la voix du navigateur.
+
+```sh
+node tools/voix.mjs --compter                                   # textes et caractères (≈ crédits ElevenLabs)
+ELEVENLABS_API_KEY=… FERDI_VOICE_ID=… node tools/voix.mjs        # enregistre les textes manquants
+```
+
+Un texte modifié est réenregistré au prochain passage, les autres ne coûtent rien.
+
 ## Développer
 
 ```sh
@@ -63,6 +76,9 @@ npm run build     # dist/ + dist/sw.js
 
 ## Crédits
 
+- Photos des étapes (Wikimedia Commons) : Porte de Gaillon par Édouard Baldus (années 1850, domaine public),
+  Porte de Gênes, orangerie et blason du pavillon Colbert, Maison Grise (CC BY-SA 3.0 / 4.0),
+  fontaine de marbre restituée (CC BY-SA 4.0), plan du parc de Gaillon par Le Rouge (1750, domaine public).
 - Images d'archives : Israël Silvestre, Jacques Androuet du Cerceau, Viollet-le-Duc, carte de Cassini,
   Art Institute of Chicago, Wikimedia Commons (licences dans le storyboard et le document du parcours).
 - Mascotte : image générée (ElevenLabs), version ado depuis nov. 2026. Intro : 7 cartes illustrées (`src/ecrans/histoire.tsx`) ; voix « Ferdi » et « Ferdinand » à refaire avec ElevenLabs (voix du navigateur en attendant).

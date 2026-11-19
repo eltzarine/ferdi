@@ -1,10 +1,12 @@
 /* Fin du parcours, certificat, carnet de l'explorateur, espace parent. */
-import { useEffect, useMemo } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useApp } from '../etat'
 import { Bouton, Ecoute, Entete, Nav } from '../ui/commun'
 import { FeuilleCarnet } from './parcours'
+import { IndicesTresor } from '../ui/tresor'
 import { bip } from '../lib/sons'
 import { scoreTotal } from '../lib/regles'
+import { dessinerCertificat, enregistrerCertificat } from '../lib/certificat'
 
 const COULEURS = ['#f2762e', '#7ec8e3', '#e8b23a', '#3e9e5c', '#f28c8c']
 
@@ -20,7 +22,7 @@ export function Fin() {
         <div style={{ textAlign: 'center', marginTop: 10 }}><span className="bd-onom slam" style={{ fontSize: 52, lineHeight: '56px' }}>DÉFI RELEVÉ !</span></div>
         <div className="bd-image plein" style={{ flex: 1, position: 'relative', background: 'var(--ciel)' }}>
           <img src={parcours.fin.image} alt="" style={{ opacity: 0.35 }} />
-          <img src="ferdi/ferdi_m4.png" alt="Ferdi saute de joie" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain', animation: 'flotte 1.4s ease-in-out infinite' }} />
+          <img src="ferdi/ferdi_m1.png" alt="Ferdi saute de joie" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain', animation: 'flotte 1.4s ease-in-out infinite' }} />
         </div>
         <div className="bd-bulle" style={{ color: 'var(--encre)', padding: 0 }}><Ecoute texte={parcours.fin.bulle} /></div>
         <Bouton vers="certificat" son="go">Mon certificat</Bouton>
@@ -31,29 +33,41 @@ export function Fin() {
 
 export function Certificat() {
   const { parcours, s, toast } = useApp()
+  const [occupe, setOccupe] = useState(false)
   useEffect(() => bip('stamp'), [])
   if (!parcours) return null
   const nom = s.nom.trim() || 'Explorateur'
   const [bons, total] = scoreTotal(s.scores?.[parcours.id])
+  const image = async (partager: boolean) => {
+    setOccupe(true)
+    try {
+      const blob = await dessinerCertificat({
+        nom, lieu: parcours.nom, indice: parcours.motSecret, vignette: 'sites/vignettes/t_' + parcours.id + '.jpg',
+        date: new Date().toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }),
+        score: s.age === 'Lycée' && total > 0 ? `Niveau lycée · ${bons}/${total} du premier coup` : undefined,
+      })
+      const texte = `${nom} a résolu les 8 énigmes du carnet de Papi au ${parcours.nom} avec Ferdi !`
+      const r = await enregistrerCertificat(blob, `certificat-ferdi-${parcours.id}.png`, partager ? texte : undefined)
+      if (r === 'telecharge') toast('📜 Certificat téléchargé')
+    } catch { toast('Impossible de créer l’image du certificat') }
+    setOccupe(false)
+  }
   return (
     <section className="scr on" id="certificat">
-      <Entete titre="Page restaurée" retour="fin" />
+      <Entete titre="Indice trouvé !" retour="fin" />
       <div className="ct">
         <div className="bd-vignette bd-scotch" style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 10, textAlign: 'center', background: 'var(--blanc-papier)' }}>
-          <span className="bd-titre" style={{ fontSize: 22, letterSpacing: 2 }}>Certificat d’explorateur</span>
+          <span className="bd-titre" style={{ fontSize: 22, letterSpacing: 2 }}>Certificat de chasseur d’Histoire</span>
           <img src="sites/vignettes/t_gaillon.jpg" alt={parcours.nom} style={{ width: 130, height: 130, borderRadius: 999, objectFit: 'cover', boxShadow: '0 0 0 5px var(--vert),0 0 0 8px var(--encre),5px 5px 0 8px var(--encre)', margin: '8px 0' }} />
           <span className="bd-titre h1">{nom}</span>
-          <span>a retrouvé les 8 pages du carnet de Ferdinand au {parcours.nom.toLowerCase()}</span>
+          <span>a résolu les 8 énigmes du carnet de Papi au {parcours.nom.charAt(0).toLowerCase() + parcours.nom.slice(1)} et trouvé l’indice du château</span>
           <div className="row" style={{ justifyContent: 'center' }}><span className="bd-etiq">8 étapes</span><span className="bd-etiq moutarde">{parcours.motSecret}</span><span className="bd-etiq">{new Date().toLocaleDateString('fr-FR')}</span></div>
           {s.age === 'Lycée' && total > 0 && <div className="bd-etiq ciel" id="score" style={{ fontSize: 16 }}>Niveau lycée · {bons} / {total} bonnes réponses du premier coup</div>}
           <div className="bd-tampon slam" style={{ width: 92, height: 92, fontSize: 15, marginTop: 4, animationDelay: '.4s' }}>VALIDÉ<small>Gaillon</small></div>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2,minmax(0,1fr))', gap: 12 }}>
-          <Bouton className="second" style={{ fontSize: 18, padding: '0 8px' }} son="ok" onClick={() => toast('📜 Certificat enregistré dans ton carnet')}>Télécharger</Bouton>
-          <Bouton className="second" style={{ fontSize: 18, padding: '0 8px' }} onClick={async () => {
-            const t = `${nom} a retrouvé les 8 pages du carnet de Ferdinand au ${parcours.nom} !`
-            if (navigator.share) { try { await navigator.share({ title: 'Mon certificat', text: t }) } catch { /* annulé */ } } else toast('Partage : « ' + t + ' »')
-          }}>Partager</Bouton>
+          <Bouton className="second" id="dl-cert" style={{ fontSize: 18, padding: '0 8px' }} son="ok" disabled={occupe} onClick={() => image(false)}>{occupe ? 'Création…' : 'Télécharger'}</Bouton>
+          <Bouton className="second" id="share" style={{ fontSize: 18, padding: '0 8px' }} disabled={occupe} onClick={() => image(true)}>Partager</Bouton>
         </div>
         <Bouton vers="carnet">Voir mon carnet</Bouton>
       </div>
@@ -71,9 +85,10 @@ export function Carnet() {
       <div className="ct" style={{ gap: 12 }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,minmax(0,1fr))', gap: 10 }}>
           <div className="bd-vignette" style={{ padding: '8px 10px', background: 'var(--orange)' }}><span className="bd-titre h2">{s.certificats.length}</span><div style={{ fontSize: 14, lineHeight: '18px' }}>certificat</div></div>
-          <div className="bd-vignette" style={{ padding: '8px 10px', background: 'var(--ciel)' }}><span className="bd-titre h2">{fait}</span><div style={{ fontSize: 14, lineHeight: '18px' }}>pages</div></div>
+          <div className="bd-vignette" style={{ padding: '8px 10px', background: 'var(--ciel)' }}><span className="bd-titre h2">{fait}</span><div style={{ fontSize: 14, lineHeight: '18px' }}>énigmes</div></div>
           <div className="bd-vignette" style={{ padding: '8px 10px', background: 'var(--corail)' }}><span className="bd-titre h2">1</span><div style={{ fontSize: 14, lineHeight: '18px' }}>région</div></div>
         </div>
+        <IndicesTresor />
         <span className="bd-titre" style={{ fontSize: 22 }}>Ma collection</span>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,minmax(0,1fr))', gap: 10 }}>
           {lieux.map((l) => s.certificats.includes(l.id) ? (
@@ -90,12 +105,12 @@ export function Carnet() {
         </div>
         {parcours && (
           <>
-            <span className="bd-titre" style={{ fontSize: 22 }}>Le carnet de Ferdinand</span>
+            <span className="bd-titre" style={{ fontSize: 22 }}>Le carnet de Papi</span>
             <div className="pages">
               {parcours.etapes.map((e, i) => i < fait ? (
-                <button key={i} className="pg-mini" onClick={() => { bip('pop'); ouvrirFeuille(<FeuilleCarnet e={e} i={i} lettre />) }}><span>{e.page.lettre}</span><small>Page {i + 1}</small></button>
+                <button key={i} className="pg-mini" onClick={() => { bip('pop'); ouvrirFeuille(<FeuilleCarnet e={e} i={i} lettre />) }}><span>{e.page.lettre}</span><small>Énigme {i + 1}</small></button>
               ) : (
-                <div key={i} className="pg-mini vide"><span>?</span><small>Page {i + 1}</small></div>
+                <div key={i} className="pg-mini vide"><span>?</span><small>Énigme {i + 1}</small></div>
               ))}
             </div>
           </>
@@ -134,7 +149,7 @@ export function Parent() {
         <span className="bd-titre" style={{ fontSize: 20 }}>Son</span>
         <div style={{ background: 'var(--blanc-papier)', border: '2px solid var(--encre)', borderRadius: 10 }}>{inter('voix', 'Voix de Ferdi', true)}{inter('sfx', 'Bruitages', false)}</div>
         <span className="bd-titre" style={{ fontSize: 20 }}>Confidentialité</span>
-        <p className="p" style={{ fontSize: 15, lineHeight: '21px' }}>Aucun compte. Le profil, les pages et les certificats restent sur ce téléphone.</p>
+        <p className="p" style={{ fontSize: 15, lineHeight: '21px' }}>Aucun compte. Le profil, les énigmes résolues et les certificats restent sur ce téléphone.</p>
         <p className="p" style={{ fontSize: 15, lineHeight: '21px', background: 'var(--moutarde)', padding: '8px 12px', border: '2px solid var(--encre)', borderRadius: 8 }}>Sur iPhone, installe l’appli sur l’écran d’accueil pour ne pas perdre la collection.</p>
         <Bouton className="second" style={{ fontSize: 18, minHeight: 48 }} son="go" onClick={() => { setApresHistoire('parent'); aller('histoire') }}>▶ Revoir l’histoire de Ferdi</Bouton>
         <Bouton className="second" style={{ fontSize: 18, minHeight: 48 }} onClick={() => ouvrirFeuille(<><div className="bd-titre" style={{ fontSize: 24 }}>Installer Ferdi</div><p className="p" style={{ fontSize: 16, lineHeight: '22px' }}>Sur iPhone : touche <b>Partager</b> puis <b>Sur l’écran d’accueil</b>.<br />Sur Android : menu <b>⋮</b> puis <b>Installer l’application</b>.</p></>)}>Installer sur l’écran d’accueil</Bouton>

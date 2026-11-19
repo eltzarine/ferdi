@@ -39,7 +39,7 @@ describe('parcours de Gaillon', () => {
   it('a 8 étapes dont les lettres forment le mot secret', () => {
     expect(parcours.etapes).toHaveLength(8)
     expect(parcours.etapes.map((e) => e.page.lettre).join('')).toBe(parcours.motSecret)
-    expect(motSecretPartiel(parcours.motSecret, 3).join('')).toBe('SOU_____')
+    expect(motSecretPartiel(parcours.motSecret, 3).join('')).toBe('CAR_____')
   })
   it('a des questions dont la bonne réponse existe', () => {
     for (const e of parcours.etapes) for (const q of e.questions) expect(q.choix[q.bonne]).toBeTruthy()

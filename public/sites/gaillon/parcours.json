@@ -2,24 +2,24 @@
  "id": "gaillon",
  "nom": "Château de Gaillon",
  "ville": "Gaillon (27)",
- "motSecret": "SOUVENIR",
- "phraseFinale": "Un monument, c’est un SOUVENIR qu’on répare ensemble.",
+ "motSecret": "CARDINAL",
+ "phraseFinale": "Bravo, mon petit Ferdinand. Garde bien ce mot : CARDINAL. Seul, il ne dit rien… Avec les indices des autres lieux, il te mènera au trésor.",
  "premierIndice": "Commence par la porte que tout le monde franchit en arrivant : le pavillon d’entrée.",
  "accueil": {
   "image": "sites/gaillon/img/accueil.jpg",
-  "titre": "Aide Ferdi à retrouver les pages du carnet !",
-  "accroche": "Une chasse au trésor à travers mille ans d’histoire",
+  "titre": "Aide Ferdi à trouver l’indice caché à Gaillon !",
+  "accroche": "Huit énigmes du carnet de Papi, mille ans d’histoire",
   "duree": "45–60 min",
   "ages": "5–18 ans"
  },
  "fiche": {
   "image": "sites/gaillon/img/lieu.jpg",
-  "bulle": "L’un des premiers châteaux de la Renaissance en France ! Mon arrière-grand-père Ferdinand y a travaillé. On y va ?",
+  "bulle": "Papi Ferdinand a mené l’enquête ici : son carnet cache huit énigmes sur Gaillon. Si on les résout, on aura l’indice du château ! On y va ?",
   "ouverture": "Du 10 avril au 4 octobre, du mardi au dimanche"
  },
  "fin": {
   "image": "sites/gaillon/img/intro.jpg",
-  "bulle": "Grâce à toi, j’ai retrouvé les 8 pages du carnet de Ferdinand ! Le mot secret, c’était SOUVENIR."
+  "bulle": "Les huit énigmes de Papi sont résolues ! L’indice de Gaillon, c’est CARDINAL. Plus que quatre lieux avant le trésor…"
  },
  "etapes": [
   {
@@ -55,9 +55,9 @@
     }
    ],
    "page": {
-    "texte": "1977. Premier jour à Gaillon. On m’a dit : commence toujours par l’entrée, c’est elle qui raconte qui vivait là.",
-    "indice": "Sur ma page, le nom de l’archevêque est à moitié effacé : Guillaume d’EST_UTE_ILLE. À toi de le compléter !",
-    "lettre": "S"
+    "texte": "Avant les palais, il y avait une forteresse. Un archevêque l’a relevée après la guerre de Cent Ans, et son nom est resté à l’entrée. Observe la tour qui monte en spirale : c’est elle qui parle la première.",
+    "indice": "Dans mon carnet, le nom de l’archevêque est à moitié effacé : Guillaume d’EST_UTE_ILLE. À toi de le compléter !",
+    "lettre": "C"
    },
    "jeu": {
     "t": "mot",
@@ -134,7 +134,7 @@
      ],
      "extra": "AUNRDS"
     },
-    "indice": "Sur ma page, il ne reste que la première lettre du nom de l’archevêque : un E. À toi de retrouver les autres !"
+    "indice": "Dans mon carnet, il ne reste que la première lettre du nom de l’archevêque : un E. À toi de retrouver les autres !"
    }
   },
   {
@@ -170,9 +170,9 @@
     }
    ],
    "page": {
-    "texte": "De la colline, deux châteaux se surveillent depuis 800 ans. Je venais les regarder avec mes jumelles.",
-    "indice": "Château-Gaillard est sur la colline d’en face. Prends-le en photo pour mon carnet !",
-    "lettre": "O"
+    "texte": "Un roi au cœur de lion a bâti mon voisin au-dessus du fleuve. Monte voir l’horizon : les deux châteaux se surveillent depuis plus de 800 ans.",
+    "indice": "Château-Gaillard est sur la colline d’en face. Prends-le en photo !",
+    "lettre": "A"
    },
    "jeu": {
     "t": "photo",
@@ -270,9 +270,9 @@
     }
    ],
    "page": {
-    "texte": "Les archevêques venaient se reposer ici, au bord de l’eau. J’y ai mangé mon casse-croûte, comme eux.",
+    "texte": "Un roi a donné ce château contre de l’eau et des poissons. Les hommes d’Église qui l’ont reçu y sont restés très longtemps… combien d’années, au juste ?",
     "indice": "Ils sont arrivés en 1262 et partis en 1789. J’avais calculé combien d’années ils sont restés… mais j’ai oublié !",
-    "lettre": "U"
+    "lettre": "R"
    },
    "jeu": {
     "t": "code",
@@ -331,7 +331,7 @@
      "consigne": "Code à 6 chiffres : écris le siècle de chaque date, dans l’ordre chronologique : 1508, 1196, 1262. Exemple : 1789 est au XVIIIe siècle, donc 18.",
      "code": "121316"
     },
-    "indice": "J’avais noté trois dates sur ma page : 1508, 1196 et 1262. Le code, c’est leurs siècles, rangés dans l’ordre du temps. Attention : 1196 n’est pas au XIe siècle !"
+    "indice": "J’avais noté trois dates dans mon carnet : 1508, 1196 et 1262. Le code, c’est leurs siècles, rangés dans l’ordre du temps. Attention : 1196 n’est pas au XIe siècle !"
    }
   },
   {
@@ -367,9 +367,9 @@
     }
    ],
    "page": {
-    "texte": "Le cardinal adorait les feuilles de chêne. Il en a fait sculpter partout. Moi, je les ai dessinées une par une.",
+    "texte": "Un cardinal revenu du sud a tout changé ici, et il a semé des feuilles de chêne dans la pierre. D’où venaient ses idées ?",
     "indice": "Le cardinal a rapporté ses idées d’un pays. Je l’ai écrit en 6 lettres.",
-    "lettre": "V"
+    "lettre": "D"
    },
    "jeu": {
     "t": "mot",
@@ -443,7 +443,7 @@
      "donne": [],
      "extra": "TOMHU"
     },
-    "indice": "Le cardinal a fait entrer à Gaillon un grand mouvement venu d’Italie. Je l’ai écrit en 11 lettres sur ma page."
+    "indice": "Le cardinal a fait entrer à Gaillon un grand mouvement venu d’Italie. Je l’ai écrit en 11 lettres dans mon carnet."
    }
   },
   {
@@ -479,9 +479,9 @@
     }
    ],
    "page": {
-    "texte": "Le jardin a disparu, mais le mur se souvient de tout. J’ai dessiné le jardin d’autrefois pour ne pas l’oublier.",
+    "texte": "Un moine-jardinier de Naples taillait les buis en drôles de formes. Le jardin a disparu, mais mon dessin, lui, se souvient.",
     "indice": "Dans mon dessin, j’ai caché trois buis taillés : un bateau, un cavalier et un oiseau.",
-    "lettre": "E"
+    "lettre": "I"
    },
    "jeu": {
     "t": "cherche",
@@ -582,7 +582,7 @@
     }
    ],
    "page": {
-    "texte": "Les jardiniers de Versailles sont venus ici. Moi, je ne sais pas tailler un oranger… mais une pierre, oui !",
+    "texte": "Deux grands noms de Versailles sont passés par ici. L’un bâtissait, l’autre dessinait les jardins. Ne les confonds pas !",
     "indice": "Deux stars de Versailles sont venues à Gaillon. Qui faisait quoi ? Relie chaque nom à son métier.",
     "lettre": "N"
    },
@@ -711,9 +711,9 @@
     }
    ],
    "page": {
-    "texte": "Ici, des gens ont vécu des moments durs. On répare aussi les pierres pour ne pas oublier.",
+    "texte": "Ici, des gens ont vécu des moments durs et travaillé de longues journées. L’Histoire n’oublie personne : cherche où ils passaient leurs journées.",
     "indice": "Les prisonniers travaillaient toute la journée dans un endroit en 7 lettres.",
-    "lettre": "I"
+    "lettre": "A"
    },
    "jeu": {
     "t": "mot",
@@ -788,7 +788,7 @@
      "donne": [],
      "extra": "SOUP"
     },
-    "indice": "En 1812, le château devient une « maison … ». J’ai écrit ce mot de 8 lettres sur ma page."
+    "indice": "En 1812, le château devient une « maison … ». J’ai écrit ce mot de 8 lettres dans mon carnet."
    }
   },
   {
@@ -824,9 +824,9 @@
     }
    ],
    "page": {
-    "texte": "1977 : les morceaux du château sont revenus de Paris. J’étais là pour les voir revenir. Le château, c’est un puzzle géant.",
-    "indice": "Ma dernière page est déchirée en morceaux. Remets ma gravure du château en ordre !",
-    "lettre": "R"
+    "texte": "Le château a été démonté, emporté à Paris, puis rapporté morceau par morceau. Remets-le d’aplomb, et l’indice de Gaillon sera complet.",
+    "indice": "Mon dessin du château est déchiré en morceaux. Remets-le en ordre !",
+    "lettre": "L"
    },
    "jeu": {
     "t": "puzzle",
