@@ -18,9 +18,3 @@
   .sheet{padding-bottom:calc(24px + var(--bas))}
   #toast{bottom:calc(90px + var(--bas))}
 }
-/* Appli installée sur l'écran d'accueil (iPhone) : avec viewport-fit=cover, un bloc fixe en
-   « inset:0 » s'arrête trop tôt et laisse une bande vide en bas (bug WebKit 237961).
-   On donne donc une hauteur explicite d'écran entier au lieu de « bottom:0 ». */
-@media (max-width:500px) and (display-mode:standalone){
-  html,body,#root{bottom:auto;height:100vh}
-}
